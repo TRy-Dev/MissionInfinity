@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PhysicsObject2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Actors/Actor.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PhysicsObject2D",
+"language": "GDScript",
+"path": "res://src/Actors/PhysicsObject2D.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://src/StateMachine/State.gd"
 } ]
 _global_script_class_icons={
+"Actor": "",
+"PhysicsObject2D": "",
 "State": ""
 }
 
@@ -22,6 +34,12 @@ _global_script_class_icons={
 
 config/name="LudumDare47"
 run/main_scene="res://src/Main.tscn"
+
+[autoload]
+
+Courtain="*res://src/Modules/Courtain.tscn"
+MusicController="*res://src/Modules/MusicController.tscn"
+SfxController="*res://src/Modules/SfxController.tscn"
 
 [importer_defaults]
 

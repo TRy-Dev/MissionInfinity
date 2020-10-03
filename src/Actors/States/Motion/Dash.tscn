@@ -2,7 +2,6 @@
 
 [ext_resource path="res://src/Actors/States/Motion/Dash.gd" type="Script" id=1]
 
-
 [node name="Dash" type="Node"]
 script = ExtResource( 1 )
 

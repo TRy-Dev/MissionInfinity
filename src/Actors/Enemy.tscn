@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://src/Actors/Actor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Actors/States/Motion/Idle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Dropbox/Art/moby/mob_slim.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.25, 20.2752 )
+
+[node name="Enemy" instance=ExtResource( 2 )]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, -5.12846 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="BodyPivot" index="0"]
+position = Vector2( 0, -20.6312 )
+texture = ExtResource( 4 )
+
+[node name="Hurtbox" parent="." index="6"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -20.3498 )
+shape = SubResource( 2 )
