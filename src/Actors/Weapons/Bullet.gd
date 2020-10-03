@@ -4,11 +4,15 @@ onready var death_timer = $DeathTimer
 
 export var speed = 500
 export var accel = -100.0
+export(float, 1.0, 100.0) var min_damage = 25.0
+export(float, 1.0, 100.0) var max_damage = 40.0
 
 const MIN_SPEED = 1.0
 const ALIVE_DURATION = 10.0
 
 var dir = Vector2()
+
+const ENV_COLLISION_MASK = 1
 
 func init(pos, rot_deg) -> void:
 	rotation_degrees = rot_deg
@@ -32,7 +36,16 @@ func die() -> void:
 	queue_free()
 
 func _on_area_entered(area):
-	print("Bullet collision with: %s - %s" % [area.name, area])
+#	print("Bullet collision with: %s - %s" % [area.name, area])
+	die()
+
+func _on_body_entered(body):
+	if body.get_collision_layer_bit(ENV_COLLISION_MASK):
+		die()
 
 func _on_DeathTimer_timeout():
 	die()
+
+func get_damage():
+	return RNG.randf(min_damage, max_damage)
+

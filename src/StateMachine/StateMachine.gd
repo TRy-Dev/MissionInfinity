@@ -11,6 +11,7 @@ signal state_changed(current_state, previous_state)
 # from this state machine interface. If you don't, the game will default to
 # the first state in the state machine's children.
 export(NodePath) var start_state
+
 var states_map = {}
 
 var states_stack = []
@@ -74,9 +75,10 @@ func _change_state(state_name):
 		if not state_name in states_map:
 			print("HEY! No such fsm state: %s" % state_name)
 			return
-		states_stack[0] = states_map[state_name]
-
+		states_stack.push_front(states_map[state_name])
+#		states_stack[0] = states_map[state_name]
 	current_state = states_stack[0]
+#	states_stack.push_front(current_state)
 	emit_signal("state_changed", current_state, current_name)
 
 	if state_name != "previous":

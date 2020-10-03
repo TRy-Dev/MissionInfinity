@@ -17,4 +17,4 @@ func update():
 	.update()
 
 func _on_Timer_timeout():
-	emit_signal("finished", "Move")
+	emit_signal("finished", "previous")

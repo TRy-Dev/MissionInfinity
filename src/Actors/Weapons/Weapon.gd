@@ -1,10 +1,13 @@
 extends Node2D
 
+class_name Weapon
+
 onready var cooldown_timer = $Cooldown
 onready var bullet_pos = $BulletPos
 onready var anim_player :AnimationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 
+export(int, 0, 40) var pivot_length = 20
 export var cooldown = 0.2
 export(PackedScene) var bullet_prefab
 
@@ -22,9 +25,4 @@ func flip(val: bool) -> void:
 		bullet_pos.position.y = start_bullet_pos_y
 
 func shoot() -> void:
-	if cooldown_timer.is_stopped():
-		cooldown_timer.start()
-		var new_bullet = bullet_prefab.instance()
-		new_bullet.init(bullet_pos.global_position, owner.rotation_degrees)
-		get_tree().get_root().add_child(new_bullet)
-		anim_player.play("shoot")
+	print("HEY! Implement weapon shooting: %s" %name)

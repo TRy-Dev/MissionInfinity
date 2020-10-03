@@ -1,4 +1,4 @@
-extends State
+extends Hurtable
 
 export(String) var step_sfx = ""
 export var accel = 60.0
@@ -7,6 +7,7 @@ onready var step_sound_timer = $StepSoundTimer
 
 func enter(previous):
 	owner.play_anim("move")
+	SfxController.play(step_sfx)
 	step_sound_timer.start()
 
 func update():

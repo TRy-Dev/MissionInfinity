@@ -1,4 +1,4 @@
-extends State
+extends Hurtable
 
 
 func enter(previous):

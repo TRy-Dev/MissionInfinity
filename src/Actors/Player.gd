@@ -1,7 +1,8 @@
 extends Actor
 
 func _ready():
-	weapon_controller.add_weapon(load("res://src/Actors/Weapons/Weapon.tscn").instance())
+#	weapon_controller.add_weapon(load("res://src/Actors/Weapons/Weapon.tscn").instance())
+	pass
 
 func get_input() -> Vector2:
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")

@@ -4,7 +4,7 @@ onready var audio_player :AudioStreamPlayer = $AudioStreamPlayer
 onready var anim_player :AnimationPlayer = $AnimationPlayer
 
 var songs = {
-#	"test": preload("res://assets/music/000001-02-devious-preparations-75bpm.ogg")
+	"blueprint": preload("res://assets/Dropbox/Audio/Theme/theme_music_blueprint.ogg"),
 }
 
 func play(name :String = "") -> void:
