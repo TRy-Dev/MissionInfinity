@@ -1,8 +1,5 @@
 extends Actor
 
-func _ready():
-#	weapon_controller.add_weapon(load("res://src/Actors/Weapons/Weapon.tscn").instance())
-	pass
 
 func get_input() -> Vector2:
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -12,8 +9,11 @@ func get_input() -> Vector2:
 func is_dashing() -> bool:
 	return Input.is_action_just_pressed("dash")
 
+func get_weapon_rotation() -> float:
+	var rot_rad = (get_global_mouse_position() - weapon_controller.global_position).angle()
+	return rad2deg(rot_rad)
+
 func update() -> void:
-	weapon_controller.update_rotation()
+	.update()
 	if Input.is_action_pressed("shoot"):
 		weapon_controller.shoot()
-	.update()

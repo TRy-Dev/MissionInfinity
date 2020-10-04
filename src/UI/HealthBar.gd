@@ -11,6 +11,9 @@ onready var update_tween = $UpdateTween
 onready var pulse_tween = $PulseTween
 onready var flash_tween = $FlashTween
 
+onready var anim_player = $AnimationPlayer
+onready var fade_out_timer = $FadeOutTimer
+
 export (Color) var healthy_color = Color.green
 export (Color) var caution_color = Color.yellow
 export (Color) var danger_color = Color.red
@@ -20,19 +23,26 @@ export (float, 0, 1, 0.05) var caution_zone = 0.5
 export (float, 0, 1, 0.05) var danger_zone = 0.2
 export (bool) var will_pulse = false
 
+var bar_hidden = true
+var max_health_updated = false
+
+func _ready():
+	_toggle_bar_visible(false, false)
+
 func _on_health_bar_updated(health, amount):
 	health_over.value = health
 	update_tween.interpolate_property(health_under, "value", health_under.value, health, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	update_tween.start()
-	
 	_assign_color(health)
 	if amount < 0:
 		_flash_damage()
+	_toggle_bar_visible(true)
+
 
 func _assign_color(health):
 	if health <= 0:
 		pulse_tween.set_active(false)
-		$AnimationPlayer.play("fade_out")
+		anim_player.play("fade_out")
 	if health < health_over.max_value * danger_zone:
 		if will_pulse:
 			if not pulse_tween.is_active():
@@ -55,9 +65,32 @@ func _flash_damage():
 		flash_tween.interpolate_callback(health_over, time, "set", "tint_progress", color)
 	flash_tween.start()
 
+func _toggle_bar_visible(val, animate=true):
+	if not animate:
+		modulate.a = 0.0
+		bar_hidden = true
+		return
+	if val:
+		if bar_hidden and fade_out_timer.is_stopped():
+			anim_player.play("fade_in")
+			bar_hidden = false
+			fade_out_timer.start()
+	else:
+		if not bar_hidden:
+			anim_player.play("fade_out")
+			yield(anim_player, "animation_finished")
+			bar_hidden = true
+	
+
 func _on_max_health_updated(max_health):
 	health_over.max_value = max_health
 	health_under.max_value = max_health
 	health_over.value = max_health
 	health_under.value = max_health
-	
+	if max_health_updated:
+		_toggle_bar_visible(true)
+	max_health_updated = true
+
+func _on_FadeOutTimer_timeout():
+	_toggle_bar_visible(false)
+

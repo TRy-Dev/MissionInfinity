@@ -4,6 +4,8 @@ export(PackedScene) var enemy_prefab
 export(float, 1.0, 100.0) var cooldown = 1.0
 
 func _ready():
+	if not enemy_prefab:
+		return
 	$Timer.wait_time = cooldown
 	_spawn_enemy()
 

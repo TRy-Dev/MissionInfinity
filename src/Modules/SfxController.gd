@@ -17,7 +17,6 @@ var clips = {
 	"step": [
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Pace/sound_effect_pace_1.1.wav"),
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Pace/sound_effect_pace_1.2.wav"),
-		preload("res://assets/Dropbox/Audio/Sound_Effect/Pace/sound_effect_pace_1.3.wav"),
 	],
 }
 

@@ -20,7 +20,7 @@ func play(name :String = "") -> void:
 
 func _play() -> void:
 	audio_player.play()
-	play_animation("fade_in")
+#	play_animation("fade_in")
 
 func pause() -> void:
 	if audio_player.playing:

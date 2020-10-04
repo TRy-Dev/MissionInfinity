@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 class_name PhysicsObject2D
 
-export(float, 1.0, 100.0) var mass = 1.0
+export(float, 0.01, 100.0) var mass = 1.0
 var velocity = Vector2()
 var acceleration = Vector2()
 export(float, 0.0, 1.0) var friction_coeff = 0.4

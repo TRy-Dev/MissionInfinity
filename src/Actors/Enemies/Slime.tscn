@@ -1,21 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Dropbox/Art/moby/mob_slim.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/Weapons/Weapons/SlimeGun.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.5, 19.9002 )
+extents = Vector2( 7.5, 14.3574 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.92041
 
 [node name="Slime" instance=ExtResource( 1 )]
+start_weapon = ExtResource( 3 )
+aim_precision = 10.0
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="Move" parent="StateMachine" index="3"]
+accel = 40.0
+
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 1 )
 
-[node name="Sprite" parent="BodyPivot" index="0"]
+[node name="Sprite" parent="BodyPivot" index="1"]
 texture = ExtResource( 2 )
 
+[node name="StateDisplay" parent="." index="5"]
+text = "hello"
+
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -0.375, -20.5998 )
+position = Vector2( 0, -14.6068 )
 shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="HurtboxCritical" index="0"]
+position = Vector2( 0, -35.0229 )
+shape = SubResource( 3 )

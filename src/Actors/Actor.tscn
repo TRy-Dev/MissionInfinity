@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/Actor.gd" type="Script" id=2]
 [ext_resource path="res://src/Actors/States/Debug/StateNameDisplay.gd" type="Script" id=3]
+[ext_resource path="res://assets/Dropbox/Art/postac/shadow_ellipse.png" type="Texture" id=4]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=5]
 [ext_resource path="res://src/Actors/Weapons/WeaponController.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dash"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "die"
 length = 0.5
 tracks/0/type = "bezier"
@@ -23,16 +24,33 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "hurt"
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
+loop = true
 
-[sub_resource type="Animation" id=3]
-resource_name = "move"
+[sub_resource type="Animation" id=5]
+loop = true
+
+[sub_resource type="Animation" id=6]
+resource_name = "spawn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Actor" type="KinematicBody2D"]
+modulate = Color( 1, 1, 1, 0 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
@@ -44,21 +62,26 @@ script = ExtResource( 5 )
 
 [node name="BodyPivot" type="Position2D" parent="."]
 
+[node name="Shadow" type="Sprite" parent="BodyPivot"]
+modulate = Color( 0, 0, 0, 0.196078 )
+texture = ExtResource( 4 )
+
 [node name="Sprite" type="Sprite" parent="BodyPivot"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dash = SubResource( 1 )
-anims/die = SubResource( 4 )
-anims/hurt = SubResource( 5 )
-anims/idle = SubResource( 2 )
-anims/move = SubResource( 3 )
+anims/die = SubResource( 2 )
+anims/hurt = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/move = SubResource( 5 )
+anims/spawn = SubResource( 6 )
 
 [node name="StateDisplay" type="Label" parent="."]
 margin_left = -19.2627
 margin_top = -73.8472
 margin_right = 20.7373
 margin_bottom = -59.8472
-text = "hello"
+text = "State"
 align = 1
 valign = 1
 script = ExtResource( 3 )
@@ -73,6 +96,12 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="HurtboxCritical" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxCritical"]
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 margin_left = -22.0

@@ -16,30 +16,21 @@ script = ExtResource( 3 )
 [node name="CameraController" parent="." instance=ExtResource( 5 )]
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="YSort" type="YSort" parent="."]
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 97.7995, -69.0488 )
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 7.29393, 128.265 )
+
+[node name="EnemySpawner" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -233.874, -113 )
 enemy_prefab = ExtResource( 6 )
 
-[node name="EnemySpawner2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 97.7995, -0.0952454 )
+[node name="EnemySpawner2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 193.757, -186.053 )
 enemy_prefab = ExtResource( 6 )
 
-[node name="EnemySpawner3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 97.7995, 103.335 )
-enemy_prefab = ExtResource( 6 )
-
-[node name="EnemySpawner4" parent="." instance=ExtResource( 4 )]
-position = Vector2( -150.265, 103.335 )
-enemy_prefab = ExtResource( 6 )
-
-[node name="EnemySpawner5" parent="." instance=ExtResource( 4 )]
-position = Vector2( -150.265, 13.3591 )
-enemy_prefab = ExtResource( 6 )
-
-[node name="EnemySpawner6" parent="." instance=ExtResource( 4 )]
-position = Vector2( -150.265, -74.9351 )
+[node name="EnemySpawner3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 217.812, -98.7452 )
 enemy_prefab = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="."]
@@ -70,7 +61,8 @@ margin_right = -10.0
 margin_bottom = -10.0
 text = "WASD - move
 SPACE - dash
-Mouse - aim, shoot"
+Mouse - aim, shoot
+R - restart level"
 __meta__ = {
 "_edit_use_anchors_": false
 }

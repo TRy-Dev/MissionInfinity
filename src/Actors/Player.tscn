@@ -11,16 +11,18 @@
 [ext_resource path="res://src/Actors/Weapons/Weapons/Pistol.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 5.66655 )
+extents = Vector2( 10, 17.9791 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11.7199, 27.2702 )
 
 [node name="Player" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
 collision_layer = 1
 collision_mask = 6
 script = ExtResource( 5 )
 start_weapon = ExtResource( 9 )
+_type = "Player"
 
 [node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 4 )]
 
@@ -30,14 +32,15 @@ start_weapon = ExtResource( 9 )
 step_sfx = "step"
 
 [node name="Hurt" parent="StateMachine" index="3" instance=ExtResource( 7 )]
+hurt_duration = 0.001
 
 [node name="Die" parent="StateMachine" index="4" instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0, -4.30764 )
+position = Vector2( 0, -17.0643 )
 shape = SubResource( 1 )
 
-[node name="Sprite" parent="BodyPivot" index="0"]
+[node name="Sprite" parent="BodyPivot" index="1"]
 position = Vector2( 0, -31.1068 )
 texture = ExtResource( 6 )
 

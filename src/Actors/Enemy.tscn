@@ -1,15 +1,39 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/Actors/Actor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Actors/States/Motion/Idle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=4]
 [ext_resource path="res://src/Actors/States/Motion/Hurt.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Actors/States/Motion/Die.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Actors/States/AI/Roam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Actors/States/Debug/StateNameDisplay.gd" type="Script" id=8]
+[ext_resource path="res://src/Actors/States/Motion/Move.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Actors/States/AI/Chase.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Actors/States/AI/Shoot.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 150.0
 
 [node name="Enemy" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 1 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
+_type = "Enemy"
+
+[node name="AI" type="Node" parent="." index="0"]
+script = ExtResource( 4 )
+start_state = NodePath("Roam")
+
+[node name="Roam" parent="AI" index="0" instance=ExtResource( 7 )]
+
+[node name="Chase" parent="AI" index="1" instance=ExtResource( 10 )]
+
+[node name="Shoot" parent="AI" index="2" instance=ExtResource( 11 )]
 
 [node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 3 )]
 
@@ -17,15 +41,56 @@ script = ExtResource( 1 )
 
 [node name="Die" parent="StateMachine" index="2" instance=ExtResource( 6 )]
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="Move" parent="StateMachine" index="3" instance=ExtResource( 9 )]
+
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -5.12846 )
 
-[node name="Sprite" parent="BodyPivot" index="0"]
+[node name="Sprite" parent="BodyPivot" index="1"]
 position = Vector2( 0, -20.6312 )
 
-[node name="Hurtbox" parent="." index="6"]
+[node name="AIStateDisplay" type="Label" parent="." index="6"]
+margin_left = -19.2627
+margin_top = -89.1905
+margin_right = 20.7373
+margin_bottom = -75.1905
+text = "AI"
+align = 1
+valign = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponController" parent="." index="7"]
+position = Vector2( 0, -20 )
+
+[node name="Hurtbox" parent="." index="8"]
 collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -20.3498 )
+
+[node name="HurtboxCritical" parent="." index="9"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="PlayerDetect" type="Area2D" parent="." index="11"]
+monitorable = false
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" index="0"]
+shape = SubResource( 1 )
+
+[node name="ShootRange" type="Area2D" parent="." index="12"]
+monitorable = false
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRange" index="0"]
+shape = SubResource( 2 )
+[connection signal="state_changed" from="AI" to="AIStateDisplay" method="_on_StateMachine_state_changed"]
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
+[connection signal="body_entered" from="ShootRange" to="." method="_on_ShootRange_body_entered"]
+[connection signal="body_exited" from="ShootRange" to="." method="_on_ShootRange_body_exited"]
