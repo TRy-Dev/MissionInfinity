@@ -11,11 +11,13 @@
 [ext_resource path="res://src/Actors/Weapons/Weapons/Pistol.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/lightmask.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.396, 14.6021 )
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 8.52018
+height = 14.746
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.7199, 27.2702 )
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 9.18761
+height = 40.5127
 
 [sub_resource type="Animation" id=3]
 resource_name = "died"
@@ -77,8 +79,8 @@ step_sfx = "step"
 [node name="Die" parent="StateMachine" index="4" instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0, -13.7218 )
-shape = SubResource( 1 )
+position = Vector2( 0, -14.3893 )
+shape = SubResource( 6 )
 
 [node name="Sprite" parent="BodyPivot" index="1"]
 position = Vector2( 0, -31.1068 )
@@ -93,7 +95,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -30.0381 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="StaminaFrozenTimer" type="Timer" parent="." index="8"]
 wait_time = 0.5
