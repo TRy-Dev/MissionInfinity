@@ -24,6 +24,5 @@ func randv(from = -1, to = 1) -> Vector2:
 #func noise_t(x) -> float:
 #	var y = OS.get_system_time_secs() % 100000
 #	var n = noise.get_noise_2d(x, y)#(x, OS.get_system_time_msecs())
-#	print(n)
 #	n = n * 2 - 1
 #	return n

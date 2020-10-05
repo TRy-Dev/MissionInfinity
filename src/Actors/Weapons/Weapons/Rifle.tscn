@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Actors/Weapons/Weapons/Pistol.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Weapons/Bullets/HighDamageBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Dropbox/Art/bron/long_gun.png" type="Texture" id=3]
+
+[node name="Rifle" instance=ExtResource( 1 )]
+pivot_length = 25
+fire_rate = 0.5
+reload_time = 2.0
+bullet_prefab = ExtResource( 2 )
+magazine_capacity = 5
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )

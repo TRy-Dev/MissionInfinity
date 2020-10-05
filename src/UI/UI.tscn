@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/Dropbox/Art/UI/ui_rightcornercorner.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Dropbox/Art/bron/bullet_basic.png" type="Texture" id=5]
 [ext_resource path="res://assets/Dropbox/Art/bron/better_gun.png" type="Texture" id=6]
 [ext_resource path="res://src/UI/StaminaBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Fonts/RobotoRegular.tres" type="DynamicFont" id=8]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -82,10 +83,11 @@ __meta__ = {
 
 [node name="mag" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
 modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
-margin_top = 6.0
+margin_top = 12.0
 margin_right = 26.0
-margin_bottom = 20.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 26, 0 )
+custom_fonts/font = ExtResource( 8 )
 text = "111"
 align = 2
 valign = 1
@@ -93,19 +95,21 @@ valign = 1
 [node name="slash" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
 modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
 margin_left = 30.0
-margin_top = 6.0
-margin_right = 35.0
-margin_bottom = 20.0
+margin_top = 12.0
+margin_right = 31.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 8 )
 text = "/"
 valign = 1
 
 [node name="ammo" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
 modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
-margin_left = 39.0
-margin_top = 6.0
-margin_right = 65.0
-margin_bottom = 20.0
+margin_left = 35.0
+margin_top = 12.0
+margin_right = 61.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 26, 0 )
+custom_fonts/font = ExtResource( 8 )
 text = "999"
 valign = 1
 

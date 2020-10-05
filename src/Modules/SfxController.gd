@@ -11,6 +11,9 @@ var clips = {
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_1.3.wav"),
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_1.4.wav"),
 	],
+	"bullet-heavy": [
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_1.4.wav"),
+	],
 	"dash": [
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Dash/sound_effect_dash_1.wav"),
 	],
@@ -38,7 +41,13 @@ var clips = {
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Gun_Reload/sound_effect_gun_reload_2.wav"),
 	],
 	"ui-click": [
-		preload("res://assets/Dropbox/Audio/Sound_Effect/Environment/sound_effect_twig_1.1.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_selection.wav"),
+	],
+	"player-dead": [
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Hero_Grunt/sound_effect_girl_die.wav"),
+	],
+	"mission-won": [
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Game_win/sound_effect_win.wav"),
 	]
 }
 

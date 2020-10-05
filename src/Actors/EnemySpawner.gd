@@ -15,7 +15,8 @@ func _spawn_enemy():
 		die()
 		return
 	var new_enemy = enemy_prefab.instance()
-	add_child(new_enemy)
+	# Parenting to YSort
+	get_parent().call_deferred("add_child", new_enemy)
 	new_enemy.global_position = global_position
 	new_enemy.connect("actor_died", self, "_on_enemy_died")
 	enemies_spawned_count -= 1

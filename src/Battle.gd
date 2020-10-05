@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var camera_controller = $CameraController
-onready var player = $World/YSort/Player
+onready var player = $YSort/Player
 onready var ui = $UI
 
 func _ready():
@@ -24,7 +24,7 @@ func _ready():
 	ui.stamina_bar._on_max_health_updated(player.MAX_STAMINA)
 	player.late_ready()
 	
-	MusicController.set_volume_db(-10)
+	MusicController.set_volume_db(-6)
 	
 
 func _process(delta):
@@ -35,16 +35,18 @@ func _process(delta):
 	if Input.is_action_just_pressed("mute_sfx"):
 		pass
 
-func _on_player_died():
+func _on_player_died(p):
+	GameController.load_menu()
 	print("Player died - MAIN")
 
 
 func _on_player_hurt(current_health, amount):
+	var dmg_mult = 1.0
 	var shake_amount = max(0.5, (100.0 - current_health) / 100.0)
 	shake_amount += 1.0
-	shake_amount *= amount / 100.0
-	print(shake_amount)
+	shake_amount *= dmg_mult * amount / 100.0
 	camera_controller.add_trauma(shake_amount)
+#	camera_controller.add_trauma(0.8)
 
 
 

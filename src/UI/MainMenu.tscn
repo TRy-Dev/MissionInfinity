@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Dropbox/Art/start_menu/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://assets/Dropbox/Art/start_menu/level_screen.png" type="Texture" id=2]
@@ -6,10 +6,13 @@
 [ext_resource path="res://src/UI/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/Dropbox/Art/start_menu/level_planets.png" type="Texture" id=5]
 [ext_resource path="res://assets/Dropbox/Art/start_menu/arrow_moving.png" type="Texture" id=6]
-[ext_resource path="res://assets/Dropbox/Art/postac/testmodel_head.png" type="Texture" id=7]
+[ext_resource path="res://assets/Dropbox/Art/UI/boss.png" type="Texture" id=7]
 [ext_resource path="res://src/UI/PlanetUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Dropbox/Art/start_menu/menu_tablet.png" type="Texture" id=9]
+[ext_resource path="res://assets/Fonts/RobotoRegular.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/Dropbox/Art/UI/boss2.png" type="Texture" id=11]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 resource_name = "show_text"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("RichTextLabel:percent_visible")
@@ -22,12 +25,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "pulse"
+[sub_resource type="Animation" id=6]
 length = 5.0
 loop = true
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Plain/Dither:modulate:a")
+tracks/0/path = NodePath("./Dither:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -37,8 +39,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2.5, 3.5, 5 )
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "bezier"
@@ -52,8 +53,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 )
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "point"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "bezier"
@@ -76,29 +76,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Tablet" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Story" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = 432.0
-custom_constants/separation = 50
+margin_left = 180.0
+margin_top = 80.0
+margin_right = 494.0
+margin_bottom = -68.0
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Screen" type="NinePatchRect" parent="Story"]
-margin_top = 59.0
-margin_right = 382.0
-margin_bottom = 359.0
-rect_min_size = Vector2( 0, 300 )
+margin_top = 50.0
+margin_right = 314.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 250 )
 texture = ExtResource( 3 )
 patch_margin_left = 6
 patch_margin_top = 6
@@ -108,24 +122,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Story/Screen"]
+[node name="Face1" type="TextureRect" parent="Story/Screen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = 40.0
-margin_right = -40.0
-margin_bottom = -40.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
 texture = ExtResource( 7 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Face2" type="TextureRect" parent="Story/Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+texture = ExtResource( 11 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FaceToggleTimer" type="Timer" parent="Story/Screen"]
+wait_time = 0.3
+autostart = true
+
 [node name="Text" type="NinePatchRect" parent="Story"]
-margin_top = 409.0
-margin_right = 382.0
-margin_bottom = 709.0
-rect_min_size = Vector2( 0, 300 )
+margin_top = 320.0
+margin_right = 314.0
+margin_bottom = 570.0
+rect_min_size = Vector2( 0, 250 )
 texture = ExtResource( 3 )
 patch_margin_left = 6
 patch_margin_top = 6
@@ -138,37 +169,37 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="Story/Text"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = 40.0
-margin_right = -40.0
-margin_bottom = -40.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_fonts/normal_font = ExtResource( 10 )
+visible_characters = 0
+percent_visible = 0.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet, dui vitae pretium vulputate, quam metus mollis est, a bibendum libero ligula aliquam turpis. Praesent viverra at erat vitae vulputate. Aliquam condimentum sapien ac tortor dapibus, vitae pellentesque mi laoreet. Vivamus mollis ipsum vel elit convallis pretium. Integer ut faucibus mi. Maecenas at fermentum quam, vitae efficitur nulla. Sed eu erat placerat velit lacinia vulputate id in metus. Curabitur dui elit, vehicula ut gravida at, venenatis quis odio. "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Story/Text"]
-anims/show_text = SubResource( 4 )
+anims/show_text = SubResource( 5 )
 
-[node name="Map" type="Control" parent="."]
+[node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -846.0
-mouse_filter = 1
+margin_left = -853.0
+margin_top = 132.0
+margin_right = -117.0
+margin_bottom = -122.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Map"]
-anims/pulse = SubResource( 1 )
-
-[node name="Plain" type="NinePatchRect" parent="Map"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 50.0
-margin_right = -50.0
-margin_bottom = -50.0
+[node name="Map" type="NinePatchRect" parent="Right"]
+margin_right = 736.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 400 )
 mouse_filter = 1
 texture = ExtResource( 3 )
 patch_margin_left = 6
@@ -179,8 +210,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dither" type="NinePatchRect" parent="Map/Plain"]
-modulate = Color( 1, 1, 1, 0.0392157 )
+[node name="Dither" type="NinePatchRect" parent="Right/Map"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
@@ -192,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Planets" type="TextureRect" parent="Map/Plain"]
+[node name="Planets" type="TextureRect" parent="Right/Map"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -205,17 +236,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlanetUI" parent="Map/Plain/Planets" instance=ExtResource( 8 )]
-margin_left = 503.0
-margin_top = 262.0
-margin_right = 634.0
-margin_bottom = 387.0
+[node name="PlanetUI" parent="Right/Map/Planets" instance=ExtResource( 8 )]
+margin_left = 450.591
+margin_top = 128.183
+margin_right = 581.591
+margin_bottom = 253.183
+text = "Start Mission"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Right/Map"]
+anims/pulse = SubResource( 6 )
+
+[node name="Weapons" type="NinePatchRect" parent="Right"]
+margin_top = 404.0
+margin_right = 736.0
+margin_bottom = 519.0
+rect_min_size = Vector2( 0, 115 )
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Right/Weapons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Right/Weapons/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 200, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Right/Weapons/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 10 )
+text = "Select weapon"
+
+[node name="WeaponDropdown" type="OptionButton" parent="Right/Weapons/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Right/Weapons/HBoxContainer"]
+margin_left = 204.0
+margin_top = 7.0
+margin_right = 404.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 200, 80 )
+custom_fonts/font = ExtResource( 10 )
+text = "Imagine weapon stats here"
+align = 1
+valign = 1
 
 [node name="Cursor" type="Sprite" parent="."]
 position = Vector2( 722.554, 116.541 )
+z_index = 100
 texture = ExtResource( 6 )
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
-anims/idle = SubResource( 2 )
-anims/point = SubResource( 3 )
+anims/idle = SubResource( 7 )
+anims/point = SubResource( 4 )
+[connection signal="timeout" from="Story/Screen/FaceToggleTimer" to="." method="_on_FaceToggleTimer_timeout"]
+[connection signal="item_selected" from="Right/Weapons/HBoxContainer/VBoxContainer/WeaponDropdown" to="." method="_on_WeaponDropdown_item_selected"]

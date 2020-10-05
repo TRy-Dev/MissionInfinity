@@ -10,3 +10,4 @@ func shoot() -> void:
 			anim_player.play("shoot")
 		else:
 			reload()
+	.shoot()

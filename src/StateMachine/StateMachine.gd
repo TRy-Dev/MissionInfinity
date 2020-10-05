@@ -30,10 +30,13 @@ func initialize():
 		start_state = get_child(0).get_path()
 	for child in get_children():
 		child.connect("finished", self, "_change_state")
-#	initialize(start_state)
 	set_active(true)
 	states_stack.push_front(get_node(start_state))
-	_change_state(states_stack[0].name)
+	if states_stack[0]:
+		_change_state(states_stack[0].name)
+	else:
+		print("HEY! Cant initialize FSM %s on %s." % [name, owner.name])
+		set_active(false)
 #	current_state = states_stack[0]
 #	current_state.enter(null)
 
@@ -81,5 +84,5 @@ func _change_state(state_name):
 #	states_stack.push_front(current_state)
 	emit_signal("state_changed", current_state, current_name)
 
-	if state_name != "previous":
-		current_state.enter(previous)
+#	if state_name != "previous":
+	current_state.enter(previous)

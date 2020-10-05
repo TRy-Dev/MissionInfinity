@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Dropbox/Art/moby/angst_alien_idle1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dropbox/Art/moby/angst_alien_walk1.png" type="Texture" id=3]
+[ext_resource path="res://src/Actors/Weapons/Weapons/SlimeGun.tscn" type="PackedScene" id=4]
+
+[node name="Angst1" instance=ExtResource( 1 )]
+start_weapon = ExtResource( 4 )
+see_range = 200.0
+
+[node name="AI" parent="." index="0"]
+start_state = NodePath("../../Angst1/AI/Roam")
+
+[node name="Move" parent="StateMachine" index="3"]
+accel = 50.0
+
+[node name="Idle" parent="BodyPivot/Movable" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Move" parent="BodyPivot/Movable" index="1"]
+texture = ExtResource( 3 )

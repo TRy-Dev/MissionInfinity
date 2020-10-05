@@ -7,8 +7,9 @@ onready var step_sound_timer = $StepSoundTimer
 
 func enter(previous):
 	owner.play_anim("move")
-	SfxController.play(step_sfx)
-	step_sound_timer.start()
+	if step_sfx:
+		SfxController.play(step_sfx)
+		step_sound_timer.start()
 
 func update():
 	var input = owner.get_input()

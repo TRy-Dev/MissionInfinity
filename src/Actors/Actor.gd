@@ -12,7 +12,12 @@ export(String) var crit_hurt_sound = ""
 
 onready var anim_player :AnimationPlayer = $AnimationPlayer
 onready var weapon_controller = $WeaponController
-onready var sprite = $BodyPivot/Sprite
+#onready var sprite = $BodyPivot/Sprite
+onready var sprites = [
+	$BodyPivot/Movable/Idle,
+	$BodyPivot/Movable/Move,
+	$BodyPivot/Movable/Dash,
+]
 
 const MAX_HEALTH = 100.0
 var health = MAX_HEALTH
@@ -26,11 +31,12 @@ func _ready() -> void:
 	$HurtboxCritical.connect("area_entered", self, "_on_CritialHurtbox_area_entered")
 	$HurtboxCritical.connect("body_entered", self, "_on_CritialHurtbox_body_entered")
 	modulate.a = 0.0
-	play_anim("spawn")
+#	play_anim("spawn")
 
 # Some things have to be loaded later for UI
 func late_ready() -> void:
-	add_weapon(start_weapon.instance())
+	if start_weapon:
+		add_weapon(start_weapon.instance())
 
 func add_weapon(w) -> void:
 	$WeaponController.add_weapon(w)
@@ -43,10 +49,12 @@ func update() -> void:
 	weapon_controller.update_rotation(get_weapon_rotation())
 
 func _set_sprite_orientation():
-	if velocity.x > 0 and sprite.flip_h:
-		sprite.flip_h = false
-	elif velocity.x < 0 and not sprite.flip_h:
-		sprite.flip_h = true
+	if velocity.x > 0 and sprites[0].flip_h:
+		for s in sprites:
+			s.flip_h = false
+	elif velocity.x < 0 and not sprites[0].flip_h:
+		for s in sprites:
+			s.flip_h = true
 
 func get_input() -> Vector2:
 	return Vector2()
@@ -58,11 +66,16 @@ func is_dashing() -> bool:
 	return false
 
 func play_anim(name) -> void:
+	if anim_player.current_animation == "die":
+		print("HEY! died already!")
+		return
 	if anim_player.has_animation(name):
-		if anim_player.current_animation == "spawn":
+		if anim_player.current_animation == name:
+			return
+		if anim_player.current_animation in ["spawn", "hurt"]:
 			anim_player.queue("_reset")
 			anim_player.queue(name)
-		elif anim_player.current_animation != name:
+		else:
 			anim_player.play("_reset")
 			anim_player.queue(name)
 	else:
@@ -93,6 +106,7 @@ func die() -> void:
 	emit_signal("actor_died", self)
 	play_anim("die")
 	dead = true
+#	$KillTimer.start()
 	yield(anim_player, "animation_finished")
 	queue_free()
 
@@ -112,6 +126,7 @@ func set_immune(val: bool, self_exit = false) -> void:
 
 func _disable_collisions(val: bool, set_world_collision = false) -> void:
 	$Hurtbox/CollisionShape2D.set_deferred("disabled", val)
+	$HurtboxCritical/CollisionShape2D.set_deferred("disabled", val)
 	if set_world_collision:
 		$CollisionShape2D.set_deferred("disabled", val)
 
@@ -145,3 +160,7 @@ func on_dash():
 
 func _on_ImmuneDisabler_timeout():
 	set_immune(false)
+
+
+func _on_KillTimer_timeout():
+	queue_free()

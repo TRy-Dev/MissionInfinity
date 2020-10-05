@@ -4,17 +4,18 @@
 [ext_resource path="res://assets/Dropbox/Art/bron/bullet_basic.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 1.97871
+radius = 5.34145
 
 [node name="Pea" instance=ExtResource( 1 )]
+friction_coeff = 0.0
 start_speed = 800.0
 min_damage = 25.0
-max_damage = 40.0
-crit_damage_mult = 2.0
+max_damage = 35.0
+crit_damage_mult = 1.5
 spawn_sound = "bullet"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="Collision" index="0"]
 shape = SubResource( 1 )
-
-[node name="Sprite" parent="." index="1"]
-texture = ExtResource( 2 )

@@ -21,4 +21,5 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="2"]
+visible = false
 occluder = SubResource( 2 )

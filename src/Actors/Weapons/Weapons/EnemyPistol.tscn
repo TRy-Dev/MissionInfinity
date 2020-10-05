@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Actors/Weapons/Weapons/Pistol.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Weapons/Bullets/SlimeBall.tscn" type="PackedScene" id=2]
+
+[node name="Pistol" instance=ExtResource( 1 )]
+fire_rate = 0.3
+reload_time = 1.0
+bullet_prefab = ExtResource( 2 )

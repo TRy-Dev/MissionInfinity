@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Actors/Weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Weapons/Weapons/Shotgun.gd" type="Script" id=2]
+[ext_resource path="res://src/Actors/Weapons/Bullets/Pea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Dropbox/Art/bron/short_gun.png" type="Texture" id=4]
+[ext_resource path="res://src/Actors/Weapons/WeaponCursor.tscn" type="PackedScene" id=5]
+
+[node name="Shotgun" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+pivot_length = 15
+fire_rate = 0.5
+reload_time = 2.0
+bullet_prefab = ExtResource( 3 )
+start_ammo = 180
+magazine_capacity = 18
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 4 )
+
+[node name="BulletPos" parent="." index="3"]
+position = Vector2( 10.1083, -2.08112 )
+
+[node name="WeaponCursor" parent="BulletPos" index="0" instance=ExtResource( 5 )]
+position = Vector2( 43.5549, 0 )

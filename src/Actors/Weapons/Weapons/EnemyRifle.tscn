@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Actors/Weapons/Weapons/Rifle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Weapons/Bullets/EnemyHighDamageBullet.tscn" type="PackedScene" id=2]
+
+[node name="Rifle" instance=ExtResource( 1 )]
+bullet_prefab = ExtResource( 2 )

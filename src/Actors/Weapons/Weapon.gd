@@ -26,6 +26,8 @@ var bullet_layer
 var ammo = 0
 var magazine_ammo = 0
 
+var is_reloading = false
+
 func _ready():
 	fire_rate_timer.wait_time = fire_rate
 	reload_timer.wait_time = reload_time
@@ -41,7 +43,9 @@ func flip(val: bool) -> void:
 		bullet_pos.position.y = start_bullet_pos_y
 
 func shoot() -> void:
-	print("HEY! Implement weapon shooting: %s" %name)
+	if magazine_ammo == 0 and ammo > 0:
+		reload()
+#	print("HEY! Implement weapon shooting: %s" %name)
 
 func set_collision_masks(layer, masks):
 	bullet_layer = layer
@@ -60,8 +64,9 @@ func decrease_magazine_ammo(amount) -> bool:
 	return false
 
 func reload():
-	if ammo < 1 or magazine_ammo >= magazine_capacity:
+	if ammo < 1 or magazine_ammo >= magazine_capacity or is_reloading:
 		return
+	is_reloading = true
 	reload_timer.start()
 	emit_signal("started_reload")
 	yield(reload_timer, "timeout")
@@ -69,6 +74,7 @@ func reload():
 	ammo -= left_ammo - magazine_ammo
 	magazine_ammo = left_ammo
 	emit_signal("reloaded", ammo, magazine_ammo)
+	is_reloading = false
 
 func can_shoot() -> bool:
 	return reload_timer.is_stopped() and fire_rate_timer.is_stopped() and bullet_prefab

@@ -13,6 +13,11 @@ func enter(previous):
 	owner.play_anim("hurt")
 	owner.set_immune(true, true)
 
+func update():
+	if owner.dead:
+		emit_signal("finished", "Die")
+		timer.stop()
+
 func _on_Timer_timeout():
 	emit_signal("finished", "previous")
 

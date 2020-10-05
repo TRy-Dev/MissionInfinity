@@ -6,7 +6,7 @@
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=5]
 [ext_resource path="res://src/Actors/Weapons/WeaponController.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "_reset"
 length = 0.001
 tracks/0/type = "bezier"
@@ -90,9 +90,58 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Movable/Idle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Movable/Move:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/Movable/Dash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyPivot/Movable/Dash:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:modulate:a")
@@ -104,8 +153,20 @@ tracks/0/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Movable/Idle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("BodyPivot:modulate:r")
@@ -148,11 +209,108 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 )
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
+length = 0.75
 loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Movable/Idle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BodyPivot/Movable/Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/Movable/Move:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyPivot/Movable/Dash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=8]
+resource_name = "move"
+length = 0.6
 loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Movable/Move:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BodyPivot/Movable/Move:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/Movable/Idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyPivot/Movable/Dash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.2
@@ -186,14 +344,32 @@ modulate = Color( 0, 0, 0, 0.196078 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="BodyPivot"]
+visible = false
+
+[node name="Movable" type="Position2D" parent="BodyPivot"]
+
+[node name="Idle" type="Sprite" parent="BodyPivot/Movable"]
+position = Vector2( 0, -32 )
+hframes = 4
+
+[node name="Move" type="Sprite" parent="BodyPivot/Movable"]
+visible = false
+position = Vector2( 0, -32 )
+hframes = 4
+
+[node name="Dash" type="Sprite" parent="BodyPivot/Movable"]
+visible = false
+position = Vector2( 0, -32 )
+hframes = 4
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/_reset = SubResource( 8 )
-anims/dash = SubResource( 9 )
-anims/die = SubResource( 10 )
-anims/hurt = SubResource( 11 )
-anims/idle = SubResource( 12 )
-anims/move = SubResource( 13 )
+anims/_reset = SubResource( 1 )
+anims/dash = SubResource( 2 )
+anims/die = SubResource( 3 )
+anims/hurt = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/move = SubResource( 8 )
 anims/spawn = SubResource( 7 )
 
 [node name="StateDisplay" type="Label" parent="."]
@@ -226,5 +402,9 @@ collision_mask = 0
 [node name="ImmuneDisabler" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="KillTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="state_changed" from="StateMachine" to="StateDisplay" method="_on_StateMachine_state_changed"]
 [connection signal="timeout" from="ImmuneDisabler" to="." method="_on_ImmuneDisabler_timeout"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/Actors/Actor.tscn" type="PackedScene" id=2]
@@ -12,6 +12,17 @@
 [ext_resource path="res://src/Actors/States/AI/Chase.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Actors/States/AI/Shoot.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 7.125
+height = 12.9931
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 7.375
+height = 29.25
+
+[sub_resource type="CapsuleShape2D" id=7]
+height = 5.5
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 200.0
@@ -29,7 +40,6 @@ crit_hurt_sound = "enemy-hurt-crit"
 
 [node name="AI" type="Node" parent="." index="0"]
 script = ExtResource( 4 )
-start_state = NodePath("Roam")
 
 [node name="Roam" parent="AI" index="0" instance=ExtResource( 7 )]
 
@@ -38,6 +48,9 @@ start_state = NodePath("Roam")
 [node name="Shoot" parent="AI" index="2" instance=ExtResource( 11 )]
 
 [node name="Die" parent="AI" index="3" instance=ExtResource( 6 )]
+
+[node name="StateMachine" parent="." index="1"]
+start_state = NodePath("Idle")
 
 [node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 3 )]
 
@@ -48,7 +61,8 @@ start_state = NodePath("Roam")
 [node name="Move" parent="StateMachine" index="3" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2( 0, -5.12846 )
+position = Vector2( 0, -11.8785 )
+shape = SubResource( 5 )
 
 [node name="Sprite" parent="BodyPivot" index="1"]
 position = Vector2( 0, -20.6312 )
@@ -74,11 +88,16 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( 0, -20.3498 )
+position = Vector2( 0, -22.1022 )
+shape = SubResource( 6 )
 
 [node name="HurtboxCritical" parent="." index="9"]
 collision_layer = 4
 collision_mask = 8
+
+[node name="CollisionShape2D" parent="HurtboxCritical" index="0"]
+position = Vector2( 0, -51.25 )
+shape = SubResource( 7 )
 
 [node name="PlayerDetect" type="Area2D" parent="." index="10"]
 monitorable = false

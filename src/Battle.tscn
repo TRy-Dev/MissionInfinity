@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Battle.gd" type="Script" id=1]
+[ext_resource path="res://src/Modules/CameraController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/World/EndGoal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/World/Environment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Dropbox/Art/tlo/background_clouds.png" type="Texture" id=6]
+[ext_resource path="res://assets/Dropbox/Art/tlo/background_mountain.png" type="Texture" id=7]
+[ext_resource path="res://assets/rect.png" type="Texture" id=8]
+[ext_resource path="res://src/Shaders/fog.shader" type="Shader" id=9]
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 9 )
+shader_param/color = Color( 0.35, 0.48, 0.95, 1 )
+shader_param/OCTAVES = 4
+shader_param/fog_scale = 20.0
+
+[node name="Battle" type="Node2D"]
+position = Vector2( -8.46353, -20.9361 )
+script = ExtResource( 1 )
+
+[node name="fog" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 1116.29, 642.56 )
+scale = Vector2( 3.18025, 2.255 )
+texture = ExtResource( 8 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Environment" parent="YSort" instance=ExtResource( 5 )]
+
+[node name="Player" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 119.017, 150.808 )
+
+[node name="CameraController" parent="." instance=ExtResource( 2 )]
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1024, 525 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, -67.8823 )
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, -124.359 )
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 1024, 525 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 7 )
+
+[node name="EndGoal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 57.9355, 164.556 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
