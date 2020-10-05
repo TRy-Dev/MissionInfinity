@@ -373,6 +373,7 @@ anims/move = SubResource( 8 )
 anims/spawn = SubResource( 7 )
 
 [node name="StateDisplay" type="Label" parent="."]
+visible = false
 margin_left = -19.2627
 margin_top = -73.8472
 margin_right = 20.7373

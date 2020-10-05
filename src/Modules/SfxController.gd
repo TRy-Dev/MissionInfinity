@@ -12,7 +12,7 @@ var clips = {
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_1.4.wav"),
 	],
 	"bullet-heavy": [
-		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_1.4.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Bullet/sound_effect_bullet_2.wav"),
 	],
 	"dash": [
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Dash/sound_effect_dash_1.wav"),
@@ -48,7 +48,18 @@ var clips = {
 	],
 	"mission-won": [
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Game_win/sound_effect_win.wav"),
+	],
+	"text-scroll-sound": [
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.1.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.2.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.3.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.4.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.5.wav"),
+	],
+	"time-travel": [
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.5.wav"),
 	]
+	
 }
 
 var audio_sources = []

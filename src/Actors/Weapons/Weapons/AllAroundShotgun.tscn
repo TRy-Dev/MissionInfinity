@@ -6,10 +6,10 @@
 
 [node name="AllAroundShotgun" instance=ExtResource( 1 )]
 pivot_length = 0
-reload_time = 2.0
+fire_rate = 0.5
 bullet_prefab = ExtResource( 2 )
 start_ammo = 160
-magazine_capacity = 8
+magazine_capacity = 16
 bullets = 8
 spread_angle = 180.0
 

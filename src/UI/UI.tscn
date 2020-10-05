@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/Dropbox/Art/UI/ui_rightcornercorner.png" type="Texture" id=2]
@@ -8,12 +8,100 @@
 [ext_resource path="res://assets/Dropbox/Art/bron/better_gun.png" type="Texture" id=6]
 [ext_resource path="res://src/UI/StaminaBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Fonts/RobotoRegular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Dropbox/Art/tlo/end_base_small2.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hide_tutorial"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/DebugTutorial:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/DebugTutorial:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("CanvasLayer/DebugTutorial:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("CanvasLayer/DebugTutorial:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "show_tutorial"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/DebugTutorial:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/DebugTutorial:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("CanvasLayer/DebugTutorial:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("CanvasLayer/DebugTutorial:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 517.039 ],
 "_edit_use_anchors_": false
 }
 
@@ -110,7 +198,7 @@ margin_right = 61.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 26, 0 )
 custom_fonts/font = ExtResource( 8 )
-text = "999"
+text = "∞"
 valign = 1
 
 [node name="Ammo" type="TextureRect" parent="CanvasLayer/BottomRight/WeaponUI"]
@@ -138,27 +226,85 @@ __meta__ = {
 [node name="DebugTutorial" type="ColorRect" parent="CanvasLayer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -245.0
+margin_top = -315.0
 margin_right = 204.0
 color = Color( 1, 1, 1, 0.117647 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="CanvasLayer/DebugTutorial"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugTutorial"]
+modulate = Color( 1, 1, 1, 0.588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hide" type="Label" parent="CanvasLayer/DebugTutorial/VBoxContainer"]
+margin_right = 184.0
+margin_bottom = 2.0
+custom_fonts/font = ExtResource( 8 )
+text = "Press H to hide"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/DebugTutorial/VBoxContainer"]
+margin_top = 22.0
+margin_right = 184.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 8 )
 text = "WASD - move
 SPACE - dash
 Mouse - aim, shoot
 R - reload
-
 P - restart game
-M - mute music"
+M - mute music
+k - toggle fullscreen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label4" type="Label" parent="CanvasLayer/DebugTutorial/VBoxContainer"]
+modulate = Color( 1, 0.333333, 0.345098, 1 )
+margin_top = 74.0
+margin_right = 184.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 8 )
+text = "Kill aliens."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DebugTutorial/VBoxContainer"]
+modulate = Color( 0.917647, 0.94902, 0.345098, 1 )
+margin_top = 96.0
+margin_right = 184.0
+margin_bottom = 140.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/DebugTutorial/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 44.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/DebugTutorial/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_top = 21.0
+margin_right = 45.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 8 )
+text = "Find pod."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hide_tutorial = SubResource( 1 )
+anims/show_tutorial = SubResource( 2 )

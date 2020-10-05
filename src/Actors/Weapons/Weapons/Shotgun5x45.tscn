@@ -4,7 +4,8 @@
 [ext_resource path="res://src/Actors/Weapons/Bullets/SlimeBall.tscn" type="PackedScene" id=2]
 
 [node name="Shotgun5x45" instance=ExtResource( 1 )]
+fire_rate = 0.7
 bullet_prefab = ExtResource( 2 )
-magazine_capacity = 10
+magazine_capacity = 15
 bullets = 5
 spread_angle = 45.0

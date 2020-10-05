@@ -1,0 +1,240 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/World/BattlefieldTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/World/Props/BarrierSide.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/World/Props/BarrierFront.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/World/Props/Box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/World/Props/Rock2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/World/Props/Rock7.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/World/Props/BoxStack.tscn" type="PackedScene" id=7]
+
+[node name="Battlefield2" instance=ExtResource( 1 )]
+
+[node name="BarrierFront" parent="." index="29" instance=ExtResource( 3 )]
+position = Vector2( 1765.48, 90.4142 )
+
+[node name="BarrierFront16" parent="." index="30" instance=ExtResource( 3 )]
+position = Vector2( 1637.69, 92.0016 )
+
+[node name="BarrierFront17" parent="." index="31" instance=ExtResource( 3 )]
+position = Vector2( 1512.29, 92.0016 )
+
+[node name="BarrierFront21" parent="." index="32" instance=ExtResource( 3 )]
+position = Vector2( 1161.6, 214.899 )
+
+[node name="BarrierFront22" parent="." index="33" instance=ExtResource( 3 )]
+position = Vector2( 1038.71, 214.899 )
+
+[node name="BarrierFront23" parent="." index="34" instance=ExtResource( 3 )]
+position = Vector2( 805.624, 214.899 )
+
+[node name="BarrierFront24" parent="." index="35" instance=ExtResource( 3 )]
+position = Vector2( 679.548, 213.84 )
+
+[node name="BarrierFront18" parent="." index="36" instance=ExtResource( 3 )]
+position = Vector2( 1770.24, 235.661 )
+
+[node name="BarrierFront19" parent="." index="37" instance=ExtResource( 3 )]
+position = Vector2( 1640.87, 236.455 )
+
+[node name="BarrierFront20" parent="." index="38" instance=ExtResource( 3 )]
+position = Vector2( 1515.46, 235.661 )
+
+[node name="BarrierSide3" parent="." index="41"]
+position = Vector2( 1867.38, 65.2905 )
+
+[node name="BarrierSide5" parent="." index="42"]
+position = Vector2( 1335.53, 156.404 )
+
+[node name="BarrierSide6" parent="." index="43"]
+position = Vector2( 1261.36, 198.783 )
+
+[node name="BarrierSide13" parent="." index="44" instance=ExtResource( 2 )]
+position = Vector2( 39.2286, 231.334 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide14" parent="." index="45" instance=ExtResource( 2 )]
+position = Vector2( 115.556, 272.865 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide15" parent="." index="46" instance=ExtResource( 2 )]
+position = Vector2( 189.639, 311.029 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide16" parent="." index="47" instance=ExtResource( 2 )]
+position = Vector2( 264.844, 349.193 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide17" parent="." index="48" instance=ExtResource( 2 )]
+position = Vector2( 341.171, 387.357 )
+scale = Vector2( -1, 1 )
+
+[node name="Rock10" parent="." index="49" instance=ExtResource( 6 )]
+position = Vector2( 537.041, 532.155 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock11" parent="." index="50" instance=ExtResource( 6 )]
+position = Vector2( 533.673, 559.655 )
+rotation = 3.14159
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide18" parent="." index="51" instance=ExtResource( 2 )]
+position = Vector2( 418.621, 431.133 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide20" parent="." index="52" instance=ExtResource( 2 )]
+position = Vector2( -473.914, 485.029 )
+
+[node name="BarrierSide21" parent="." index="53" instance=ExtResource( 2 )]
+position = Vector2( -538.059, 518.883 )
+
+[node name="BarrierSide22" parent="." index="54" instance=ExtResource( 2 )]
+position = Vector2( 2355.69, 441.966 )
+
+[node name="BarrierSide23" parent="." index="55" instance=ExtResource( 2 )]
+position = Vector2( 2284.98, 474.493 )
+
+[node name="BarrierSide24" parent="." index="56" instance=ExtResource( 2 )]
+position = Vector2( 2214.27, 507.02 )
+
+[node name="BarrierSide19" parent="." index="57" instance=ExtResource( 2 )]
+position = Vector2( 500.56, 477.154 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide8" parent="." index="58" instance=ExtResource( 2 )]
+position = Vector2( 503.175, 159.583 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide9" parent="." index="59" instance=ExtResource( 2 )]
+position = Vector2( 429.23, 121.275 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide10" parent="." index="60" instance=ExtResource( 2 )]
+position = Vector2( 355.286, 82.9661 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide11" parent="." index="61" instance=ExtResource( 2 )]
+position = Vector2( 285.796, 44.6574 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide12" parent="." index="62" instance=ExtResource( 2 )]
+position = Vector2( 214.524, 9.91238 )
+scale = Vector2( -1, 1 )
+
+[node name="Rock2" parent="." index="63" instance=ExtResource( 5 )]
+position = Vector2( 702.115, 366.474 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock3" parent="." index="64" instance=ExtResource( 5 )]
+position = Vector2( 1097.22, 437.189 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock4" parent="." index="65" instance=ExtResource( 5 )]
+position = Vector2( 240.783, 198.105 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock5" parent="." index="66" instance=ExtResource( 5 )]
+position = Vector2( 240.783, 198.105 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock7" parent="." index="67" instance=ExtResource( 6 )]
+position = Vector2( 653.332, 72.658 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock8" parent="." index="68" instance=ExtResource( 6 )]
+position = Vector2( 653.332, 72.658 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Box" parent="." index="69" instance=ExtResource( 4 )]
+position = Vector2( 1272.45, 487.23 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack" parent="." index="70" instance=ExtResource( 7 )]
+position = Vector2( 1712.57, 471.602 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack2" parent="." index="71" instance=ExtResource( 7 )]
+position = Vector2( 1755.22, 477.214 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack3" parent="." index="72" instance=ExtResource( 7 )]
+position = Vector2( 1791.14, 483.949 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack4" parent="." index="73" instance=ExtResource( 7 )]
+position = Vector2( 1649.71, 353.956 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack8" parent="." index="74" instance=ExtResource( 7 )]
+position = Vector2( 983.72, 390.955 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack11" parent="." index="75" instance=ExtResource( 7 )]
+position = Vector2( 878.209, 393.2 )
+rotation = -3.14159
+scale = Vector2( -1, -1 )
+
+[node name="BoxStack9" parent="." index="76" instance=ExtResource( 7 )]
+position = Vector2( -1.81036, 402.728 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack10" parent="." index="77" instance=ExtResource( 7 )]
+position = Vector2( 366.502, 244.639 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack5" parent="." index="78" instance=ExtResource( 7 )]
+position = Vector2( 1910.34, 340.183 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack6" parent="." index="79" instance=ExtResource( 7 )]
+position = Vector2( 1982.38, 302.042 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BoxStack7" parent="." index="80" instance=ExtResource( 7 )]
+position = Vector2( 2024.76, 180.204 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Box2" parent="." index="81" instance=ExtResource( 4 )]
+position = Vector2( 1315.22, 448.03 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Box3" parent="." index="82" instance=ExtResource( 4 )]
+position = Vector2( 1346.4, 494.357 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock9" parent="." index="83" instance=ExtResource( 6 )]
+position = Vector2( 1531.34, 462.218 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock6" parent="." index="84" instance=ExtResource( 5 )]
+position = Vector2( 1297.09, 67.7521 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="BarrierSide7" parent="." index="85"]
+position = Vector2( 578.01, 198.783 )
+scale = Vector2( -1, 1 )
+
+[node name="BarrierSide4" parent="." index="86"]
+position = Vector2( 1408.63, 112.966 )

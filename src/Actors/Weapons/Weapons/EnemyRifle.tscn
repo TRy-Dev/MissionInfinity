@@ -4,4 +4,7 @@
 [ext_resource path="res://src/Actors/Weapons/Bullets/EnemyHighDamageBullet.tscn" type="PackedScene" id=2]
 
 [node name="Rifle" instance=ExtResource( 1 )]
+fire_rate = 0.8
+reload_time = 2.0
 bullet_prefab = ExtResource( 2 )
+magazine_capacity = 5

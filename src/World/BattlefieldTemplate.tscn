@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/rect.png" type="Texture" id=1]
+[ext_resource path="res://src/World/Props/DebugBorder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/World/BattlefieldTemplate.gd" type="Script" id=3]
+[ext_resource path="res://src/World/Props/Canyon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/World/Props/BarrierFront.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/World/Props/BarrierSide.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/World/Props/Wall.tscn" type="PackedScene" id=7]
+
+[node name="BattlefieldTemplate" type="YSort"]
+script = ExtResource( 3 )
+
+[node name="SmallPropsFrom" type="Node2D" parent="."]
+position = Vector2( 134.644, 60.35 )
+
+[node name="SmallPropsTo" type="Node2D" parent="."]
+position = Vector2( 1883.41, 513.517 )
+
+[node name="Canyon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 191.047, 652.295 )
+
+[node name="Canyon2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 700.739, 652.295 )
+
+[node name="Canyon3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1210.32, 652.295 )
+
+[node name="Canyon4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1713.18, 652.295 )
+
+[node name="Canyon5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2213.82, 652.295 )
+
+[node name="Canyon8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2731.81, 650.613 )
+
+[node name="Canyon6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -306.312, 652.295 )
+
+[node name="Canyon7" parent="." instance=ExtResource( 4 )]
+position = Vector2( -818.155, 652.295 )
+
+[node name="Canyon9" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1332.15, 652.295 )
+
+[node name="DebugBorder" parent="." instance=ExtResource( 2 )]
+position = Vector2( 949.166, -537.748 )
+
+[node name="DebugBorder3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 919.667, 1010.25 )
+
+[node name="DebugBorder5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2606.99, 457.827 )
+rotation = 1.5708
+
+[node name="DebugBorder4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -729.563, 563.273 )
+rotation = 1.5708
+
+[node name="Floor" type="Sprite" parent="."]
+modulate = Color( 0.34902, 0.541176, 0.521569, 1 )
+position = Vector2( 860.669, 1014.38 )
+scale = Vector2( 4.18319, 1.9941 )
+z_index = -100
+texture = ExtResource( 1 )
+
+[node name="BarrierFront2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 185.11, -20.1815 )
+
+[node name="BarrierFront3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 307.44, -20.1815 )
+
+[node name="BarrierFront4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 429.769, -20.1815 )
+
+[node name="BarrierFront5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 551.391, -20.1815 )
+
+[node name="BarrierFront6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 673.721, -20.1815 )
+
+[node name="BarrierFront7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 795.806, -20.1815 )
+
+[node name="BarrierFront8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 917.429, -20.1815 )
+
+[node name="BarrierFront9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1039.76, -20.1815 )
+
+[node name="BarrierFront10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1162.09, -20.1815 )
+
+[node name="BarrierFront11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1283.71, -20.1815 )
+
+[node name="BarrierFront12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1406.04, -20.1815 )
+
+[node name="BarrierFront13" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1528.12, -20.1815 )
+
+[node name="BarrierFront14" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1649.75, -20.1815 )
+
+[node name="BarrierFront15" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1772.08, -20.1815 )
+
+[node name="BarrierSide" parent="." instance=ExtResource( 6 )]
+position = Vector2( 89.3608, -2.00226 )
+
+[node name="BarrierSide3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -471.518, 488.796 )
+
+[node name="BarrierSide5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2377.82, 443.435 )
+
+[node name="BarrierSide6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2307.27, 478.713 )
+
+[node name="BarrierSide7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2233.56, 513.99 )
+
+[node name="BarrierSide4" parent="." instance=ExtResource( 6 )]
+position = Vector2( -538.23, 518.09 )
+
+[node name="BarrierSide2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1865.05, -2.00226 )
+scale = Vector2( -1, 1 )
+
+[node name="Wall" parent="." instance=ExtResource( 7 )]
+position = Vector2( -95.244, 17.4614 )
+scale = Vector2( -1, 1 )
+
+[node name="Wall2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -317.48, 242.872 )
+scale = Vector2( -1, 1 )
+
+[node name="Wall3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2039.62, -13.4824 )
+
+[node name="Wall4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2267.95, 212.467 )

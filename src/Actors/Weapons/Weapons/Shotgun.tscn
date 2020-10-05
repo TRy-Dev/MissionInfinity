@@ -9,11 +9,11 @@
 [node name="Shotgun" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 pivot_length = 15
-fire_rate = 0.5
-reload_time = 2.0
+fire_rate = 0.4
+reload_time = 1.5
 bullet_prefab = ExtResource( 3 )
 start_ammo = 180
-magazine_capacity = 18
+magazine_capacity = 21
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )

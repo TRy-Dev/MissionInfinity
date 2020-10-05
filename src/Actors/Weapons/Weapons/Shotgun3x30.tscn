@@ -4,4 +4,5 @@
 [ext_resource path="res://src/Actors/Weapons/Bullets/SlimeBall.tscn" type="PackedScene" id=2]
 
 [node name="Shotgun" instance=ExtResource( 1 )]
+fire_rate = 0.7
 bullet_prefab = ExtResource( 2 )

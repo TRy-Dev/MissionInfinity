@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Actors/Weapons/Bullets/HighDamageBullet.tscn" type="PackedScene" id=1]
 
 [node name="EnemyHighDamageBullet" instance=ExtResource( 1 )]
-start_speed = 800.0
+start_speed = 600.0
 min_damage = 30.0
 max_damage = 40.0
 crit_damage_mult = 1.0

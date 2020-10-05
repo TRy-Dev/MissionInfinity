@@ -6,4 +6,5 @@
 [node name="Sand2" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="0"]
+z_index = -1
 texture = ExtResource( 1 )

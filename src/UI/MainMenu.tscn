@@ -184,6 +184,12 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Story/Text"]
 anims/show_text = SubResource( 5 )
 
+[node name="TextTypeTimer" type="Timer" parent="Story/Text"]
+one_shot = true
+
+[node name="TextTypeSound" type="Timer" parent="Story/Text"]
+wait_time = 0.1
+
 [node name="Right" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -237,10 +243,31 @@ __meta__ = {
 }
 
 [node name="PlanetUI" parent="Right/Map/Planets" instance=ExtResource( 8 )]
-margin_left = 450.591
-margin_top = 128.183
-margin_right = 581.591
-margin_bottom = 253.183
+margin_left = 1.66626
+margin_top = 6.28662
+margin_right = 101.666
+margin_bottom = 106.287
+text = "Start Mission"
+
+[node name="PlanetUI2" parent="Right/Map/Planets" instance=ExtResource( 8 )]
+margin_left = 109.609
+margin_top = 135.66
+margin_right = 209.609
+margin_bottom = 235.66
+text = "Start Mission"
+
+[node name="PlanetUI3" parent="Right/Map/Planets" instance=ExtResource( 8 )]
+margin_left = 264.381
+margin_top = 225.348
+margin_right = 364.381
+margin_bottom = 325.348
+text = "Start Mission"
+
+[node name="PlanetUI4" parent="Right/Map/Planets" instance=ExtResource( 8 )]
+margin_left = 441.556
+margin_top = 117.849
+margin_right = 591.556
+margin_bottom = 267.849
 text = "Start Mission"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Right/Map"]
@@ -317,4 +344,6 @@ hframes = 8
 anims/idle = SubResource( 7 )
 anims/point = SubResource( 4 )
 [connection signal="timeout" from="Story/Screen/FaceToggleTimer" to="." method="_on_FaceToggleTimer_timeout"]
+[connection signal="timeout" from="Story/Text/TextTypeTimer" to="." method="_on_TextTypeTimer_timeout"]
+[connection signal="timeout" from="Story/Text/TextTypeSound" to="." method="_on_TextTypeSound_timeout"]
 [connection signal="item_selected" from="Right/Weapons/HBoxContainer/VBoxContainer/WeaponDropdown" to="." method="_on_WeaponDropdown_item_selected"]

@@ -71,7 +71,7 @@ func reload():
 	emit_signal("started_reload")
 	yield(reload_timer, "timeout")
 	var left_ammo = min(ammo, magazine_capacity)
-	ammo -= left_ammo - magazine_ammo
+	# ammo -= left_ammo - magazine_ammo
 	magazine_ammo = left_ammo
 	emit_signal("reloaded", ammo, magazine_ammo)
 	is_reloading = false

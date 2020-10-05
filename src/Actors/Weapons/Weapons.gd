@@ -5,11 +5,12 @@ var weapons = {
 	"shotgun": preload("res://src/Actors/Weapons/Weapons/Shotgun.tscn"),
 	"rifle": preload("res://src/Actors/Weapons/Weapons/Rifle.tscn"),
 	"machine_gun": preload("res://src/Actors/Weapons/Weapons/MachineGun.tscn"),
+	"cheese_gun": preload("res://src/Actors/Weapons/Weapons/CheeseGun.tscn"),
 }
 
 var unlocked_weapons = ["pistol"]
 
-var weapons_to_unlock = ["shotgun", "rifle", "machine_gun"]
+var weapons_to_unlock = ["shotgun", "rifle", "machine_gun", "cheese_gun"]
 
 var start_weapon = null
 

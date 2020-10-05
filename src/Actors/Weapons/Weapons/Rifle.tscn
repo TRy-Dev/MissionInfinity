@@ -7,9 +7,10 @@
 [node name="Rifle" instance=ExtResource( 1 )]
 pivot_length = 25
 fire_rate = 0.5
-reload_time = 2.0
+reload_time = 1.5
 bullet_prefab = ExtResource( 2 )
-magazine_capacity = 5
+start_ammo = 120
+magazine_capacity = 8
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

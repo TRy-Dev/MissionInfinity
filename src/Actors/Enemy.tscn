@@ -13,21 +13,21 @@
 [ext_resource path="res://src/Actors/States/AI/Shoot.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=12]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 7.125
 height = 12.9931
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 7.375
 height = 29.25
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=3]
 height = 5.5
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 200.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=5]
 radius = 120.0
 
 [node name="Enemy" instance=ExtResource( 2 )]
@@ -62,12 +62,13 @@ start_state = NodePath("Idle")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -11.8785 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="Sprite" parent="BodyPivot" index="1"]
 position = Vector2( 0, -20.6312 )
 
 [node name="AIStateDisplay" type="Label" parent="." index="6"]
+visible = false
 margin_left = -19.2627
 margin_top = -89.1905
 margin_right = 20.7373
@@ -89,7 +90,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -22.1022 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="HurtboxCritical" parent="." index="9"]
 collision_layer = 4
@@ -97,21 +98,21 @@ collision_mask = 8
 
 [node name="CollisionShape2D" parent="HurtboxCritical" index="0"]
 position = Vector2( 0, -51.25 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="PlayerDetect" type="Area2D" parent="." index="10"]
 monitorable = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="ShootRange" type="Area2D" parent="." index="11"]
 monitorable = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRange" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="HealthBar" parent="." index="12" instance=ExtResource( 12 )]
 margin_top = -53.2593

@@ -1,18 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Actors/Weapons/Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/Dropbox/Art/bron/bullet_basic.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dropbox/Art/bron/cheese_bullet.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 5.34145
+radius = 8.3509
 
-[node name="Pea" instance=ExtResource( 1 )]
+[node name="Bullet" instance=ExtResource( 1 )]
 friction_coeff = 0.0
-start_speed = 700.0
-min_damage = 20.0
-max_damage = 30.0
-crit_damage_mult = 1.5
-spawn_sound = "bullet"
+start_speed = 500.0
+min_damage = 15.0
+max_damage = 15.0
+crit_damage_mult = 2.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

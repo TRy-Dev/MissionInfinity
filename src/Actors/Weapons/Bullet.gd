@@ -19,6 +19,8 @@ var min_speed_squared = pow(MIN_SPEED, 2)
 var bullet_layer = -1
 var collision_masks = []
 
+const OFF_SCREEN_ALIVE_FOR = 0.1
+
 func init(pos, rot_deg, _bullet_layer, _collision_masks) -> void:
 	rotation_degrees = rot_deg
 	global_position = pos
@@ -63,3 +65,8 @@ func get_damage():
 func get_critical_damage():
 	return get_damage() * crit_damage_mult
 
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	death_timer.wait_time = OFF_SCREEN_ALIVE_FOR
+	death_timer.start()

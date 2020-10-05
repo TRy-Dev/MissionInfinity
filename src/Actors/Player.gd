@@ -68,6 +68,7 @@ func on_dash():
 
 func die():
 	light_anim.play("died")
+	SfxController.play("player-dead")
 	.die()
 
 func play_anim(name) -> void:

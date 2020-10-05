@@ -9,6 +9,7 @@ func _ready():
 		return
 	$Timer.wait_time = cooldown
 	_spawn_enemy()
+	$Sprite.visible = false
 
 func _spawn_enemy():
 	if enemies_spawned_count < 1:

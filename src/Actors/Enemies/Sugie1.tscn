@@ -8,7 +8,7 @@
 [node name="Sugie1" instance=ExtResource( 1 )]
 start_weapon = ExtResource( 4 )
 see_range = 300.0
-shoot_range = 200.0
+shoot_range = 220.0
 
 [node name="Move" parent="StateMachine" index="3"]
 accel = 40.0

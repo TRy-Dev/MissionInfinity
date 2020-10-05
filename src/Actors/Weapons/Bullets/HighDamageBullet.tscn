@@ -8,7 +8,7 @@ radius = 5.42606
 
 [node name="HighDamageBullet" instance=ExtResource( 2 )]
 friction_coeff = 0.0
-start_speed = 1000.0
+start_speed = 800.0
 min_damage = 40.0
 max_damage = 60.0
 crit_damage_mult = 2.0

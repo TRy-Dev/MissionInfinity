@@ -5,10 +5,10 @@
 
 [node name="MachineGun" instance=ExtResource( 1 )]
 pivot_length = 25
-fire_rate = 0.1
-reload_time = 1.0
-start_ammo = 500
-magazine_capacity = 50
+fire_rate = 0.15
+reload_time = 2.0
+start_ammo = 300
+magazine_capacity = 30
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

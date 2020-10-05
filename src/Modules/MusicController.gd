@@ -38,9 +38,10 @@ func stop() -> void:
 	audio_player.stop()
 	audio_player.stream_paused = false
 
-func set_volume_db(val: float) -> void:
+func set_volume_db(val: float, set_base=true) -> void:
 	audio_player.volume_db = val
-	base_volume_db = val
+	if set_base:
+		base_volume_db = val
 
 func play_animation(name: String) -> void:
 	if anim_player.has_animation(name):
@@ -61,7 +62,7 @@ func tween_volume_db(val):
 func toggle_muted():
 	muted = !muted
 	if muted:
-		set_volume_db(-80)
+		set_volume_db(-80, false)
 	else:
-		set_volume_db(base_volume_db)
+		set_volume_db(base_volume_db, false)
 		

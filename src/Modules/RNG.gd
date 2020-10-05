@@ -21,6 +21,8 @@ func randi_range() -> int:
 func randv(from = -1, to = 1) -> Vector2:
 	return Vector2(self.randi(from, to), self.randi(from, to))
 
+func randvv(v_from, v_to) -> Vector2:
+	return Vector2(self.randi(v_from.x, v_to.x), self.randi(v_from.y, v_to.y))
 #func noise_t(x) -> float:
 #	var y = OS.get_system_time_secs() % 100000
 #	var n = noise.get_noise_2d(x, y)#(x, OS.get_system_time_msecs())
