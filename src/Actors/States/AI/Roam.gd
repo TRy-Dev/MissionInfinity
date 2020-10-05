@@ -1,4 +1,4 @@
-extends State
+extends AIState
 
 onready var timer = $Timer
 
@@ -9,9 +9,10 @@ func enter(previous):
 	timer.start()
 
 func update():
-	if owner.target:
+	if not owner.dead and owner.target:
 		emit_signal("finished", "Chase")
-	# Do not propagate to State.update() - enemy will update twice
+	else:
+		.update()
 
 func exit():
 	timer.stop()

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/World/WorldProp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Dropbox/Art/propy/box1.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/Weapons/BulletDestroy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.2304
+height = 39.257
+
+[sub_resource type="CapsuleShape2D" id=4]
+height = 23.708
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 15.5239
+height = 0.0
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -24.9869, -5.76874, 5.63734, -23.9511, 19.4311, 14.6137 )
+
+[node name="BoxStack" instance=ExtResource( 1 )]
+
+[node name="Sprite2" type="Sprite" parent="." index="0"]
+position = Vector2( -16.8369, -8.9797 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="." index="2"]
+position = Vector2( 17.1176, 8.41846 )
+texture = ExtResource( 2 )
+
+[node name="Sprite8" type="Sprite" parent="." index="3"]
+position = Vector2( 34.972, 16.5502 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="." index="4"]
+position = Vector2( -8.97969, -19.0819 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="." index="5"]
+position = Vector2( 8.13786, -10.944 )
+texture = ExtResource( 2 )
+
+[node name="Sprite7" type="Sprite" parent="." index="6"]
+position = Vector2( 26.3459, -2.10518 )
+texture = ExtResource( 2 )
+
+[node name="Sprite6" type="Sprite" parent="." index="7"]
+position = Vector2( -1.12246, -30.3065 )
+texture = ExtResource( 2 )
+
+[node name="Sprite9" type="Sprite" parent="." index="8"]
+position = Vector2( 17.0855, -20.9373 )
+texture = ExtResource( 2 )
+
+[node name="Sprite10" type="Sprite" parent="." index="9"]
+position = Vector2( 8.06992, -40.3828 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="10"]
+position = Vector2( 0.34877, 0.966585 )
+rotation = -1.13446
+shape = SubResource( 1 )
+
+[node name="BulletDestroy" parent="." index="11" instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDestroy" index="0"]
+position = Vector2( 5.5, -15.25 )
+rotation = -1.0472
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletDestroy" index="1"]
+position = Vector2( 8, -29.75 )
+rotation = -1.0472
+shape = SubResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="12"]
+occluder = SubResource( 5 )

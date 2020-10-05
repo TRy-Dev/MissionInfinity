@@ -42,6 +42,7 @@ func _physics_process(delta):
 		die()
 
 func die() -> void:
+	ParticleSystem.spawn_particle("impact", global_position)
 	queue_free()
 
 func _on_Collision_area_entered(area):

@@ -4,7 +4,8 @@
 [ext_resource path="res://assets/Dropbox/Art/moby/mob_slim.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Weapons/Weapons/SlimeGun.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=4]
+height = 10.6809
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.5, 14.3574 )
@@ -20,7 +21,8 @@ aim_precision = 10.0
 accel = 40.0
 
 [node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource( 1 )
+position = Vector2( 0, -12.5118 )
+shape = SubResource( 4 )
 
 [node name="Sprite" parent="BodyPivot" index="1"]
 texture = ExtResource( 2 )

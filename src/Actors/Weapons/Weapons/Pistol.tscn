@@ -8,7 +8,10 @@
 
 [node name="Pistol" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+fire_rate = 0.2
 bullet_prefab = ExtResource( 4 )
+start_ammo = 200
+magazine_capacity = 20
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

@@ -26,3 +26,5 @@ func exit():
 
 func _on_StepSoundTimer_timeout():
 	SfxController.play(step_sfx)
+#	if RNG.randf() < 0.1:
+#		SfxController.play("twig-break")

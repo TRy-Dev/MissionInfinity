@@ -1,6 +1,9 @@
-extends State
+extends AIState
 
 func update():
+	if owner.dead:
+		.update()
+		return
 	if not owner.target:
 		emit_signal("finished", "Roam")
 	elif owner.target_in_shooting_range:

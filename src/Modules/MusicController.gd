@@ -7,6 +7,10 @@ var songs = {
 	"blueprint": preload("res://assets/Dropbox/Audio/Theme/theme_music_blueprint.ogg"),
 }
 
+var muted = false
+
+var base_volume_db = 0
+
 func play(name :String = "") -> void:
 	if name in songs:
 		audio_player.stream = songs[name]
@@ -32,9 +36,18 @@ func stop() -> void:
 
 func set_volume_db(val: float) -> void:
 	audio_player.volume_db = val
+	base_volume_db = val
 
 func play_animation(name: String) -> void:
 	if anim_player.has_animation(name):
 		anim_player.play(name)
 	else:
 		print("HEY! No such music animation: %s" %name)
+
+func toggle_muted():
+	muted = !muted
+	if muted:
+		set_volume_db(-80)
+	else:
+		set_volume_db(base_volume_db)
+		

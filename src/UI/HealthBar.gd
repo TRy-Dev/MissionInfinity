@@ -22,11 +22,15 @@ export (Color) var flash_color = Color.orangered
 export (float, 0, 1, 0.05) var caution_zone = 0.5
 export (float, 0, 1, 0.05) var danger_zone = 0.2
 export (bool) var will_pulse = false
+export (bool) var will_fade = true
 
 var bar_hidden = true
 var max_health_updated = false
 
+
 func _ready():
+	if not will_fade:
+		bar_hidden = false
 	_toggle_bar_visible(false, false)
 
 func _on_health_bar_updated(health, amount):
@@ -42,8 +46,10 @@ func _on_health_bar_updated(health, amount):
 func _assign_color(health):
 	if health <= 0:
 		pulse_tween.set_active(false)
-		anim_player.play("fade_out")
+		_toggle_bar_visible(false)
 	if health < health_over.max_value * danger_zone:
+		if not will_fade:
+			Courtain.play_animation("danger")
 		if will_pulse:
 			if not pulse_tween.is_active():
 				pulse_tween.interpolate_property(health_over, "tint_progress", pulse_color, danger_color, 1.2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
@@ -66,6 +72,8 @@ func _flash_damage():
 	flash_tween.start()
 
 func _toggle_bar_visible(val, animate=true):
+	if not will_fade:
+		return
 	if not animate:
 		modulate.a = 0.0
 		bar_hidden = true

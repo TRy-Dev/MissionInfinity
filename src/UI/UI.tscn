@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/UI/UI.gd" type="Script" id=1]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_rightcornercorner.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_leftcorner.png" type="Texture" id=3]
+[ext_resource path="res://src/UI/PlayerHealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Dropbox/Art/bron/bullet_basic.png" type="Texture" id=5]
+[ext_resource path="res://assets/Dropbox/Art/bron/better_gun.png" type="Texture" id=6]
+[ext_resource path="res://src/UI/StaminaBar.tscn" type="PackedScene" id=7]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopLeft" type="Control" parent="CanvasLayer"]
+margin_right = 96.0
+margin_bottom = 51.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopLeft"]
+margin_right = 96.0
+margin_bottom = 51.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHealthBar" parent="CanvasLayer/TopLeft/TextureRect" instance=ExtResource( 4 )]
+margin_left = 4.5962
+margin_top = 6.36396
+margin_right = -91.4038
+margin_bottom = -44.636
+
+[node name="StaminaBar" parent="CanvasLayer/TopLeft/TextureRect" instance=ExtResource( 7 )]
+margin_left = 28.0332
+margin_top = 33.7029
+margin_right = -67.9668
+margin_bottom = -17.2971
+
+[node name="BottomRight" type="Control" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -94.0
+margin_right = -140.0
+margin_bottom = -47.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponUI" type="TextureRect" parent="CanvasLayer/BottomRight"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomRight/WeaponUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -33.0
+margin_top = -26.0
+margin_right = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mag" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
+modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
+margin_top = 6.0
+margin_right = 26.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 26, 0 )
+text = "111"
+align = 2
+valign = 1
+
+[node name="slash" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
+modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
+margin_left = 30.0
+margin_top = 6.0
+margin_right = 35.0
+margin_bottom = 20.0
+text = "/"
+valign = 1
+
+[node name="ammo" type="Label" parent="CanvasLayer/BottomRight/WeaponUI/HBoxContainer"]
+modulate = Color( 0.286275, 0.121569, 0.247059, 1 )
+margin_left = 39.0
+margin_top = 6.0
+margin_right = 65.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 26, 0 )
+text = "999"
+valign = 1
+
+[node name="Ammo" type="TextureRect" parent="CanvasLayer/BottomRight/WeaponUI"]
+margin_left = 9.0
+margin_top = 23.0
+margin_right = 25.0
+margin_bottom = 39.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="TextureRect" parent="CanvasLayer/BottomRight/WeaponUI"]
+margin_left = 111.0
+margin_top = 8.0
+margin_right = 133.0
+margin_bottom = 28.0
+texture = ExtResource( 6 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugTutorial" type="ColorRect" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -245.0
+margin_right = 204.0
+color = Color( 1, 1, 1, 0.117647 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/DebugTutorial"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "WASD - move
+SPACE - dash
+Mouse - aim, shoot
+R - reload
+
+P - restart game
+M - mute music"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -6,18 +6,18 @@ onready var tween_rotate = $RotateTween
 const TRANS_TYPE = Tween.TRANS_QUAD
 const EASE_TYPE = Tween.EASE_IN_OUT
 
-const ZOOM_MIN = 2.0
-const ZOOM_MAX = 0.5
-const ZOOM_DURATION = 1.0
+const ZOOM_MIN = 0.5
+const ZOOM_MAX = 2.0
+const ZOOM_DURATION = 2.0
 
 const ROT_MIN = -180
 const ROT_MAX = 180
 const ROT_DURATION = 2.0
 
-const SHAKE_DECAY = 0.8
-const SHAKE_MAX_OFFSET = Vector2(100, 75)
+const SHAKE_DECAY = 0.75
+const SHAKE_MAX_OFFSET = Vector2(200, 150)
 const SHAKE_MAX_ROLL = 0.1
-const SHAKE_TRAUMA_POWER = 3
+const SHAKE_TRAUMA_POWER = 2
 var shake_trauma = 0.0
 
 onready var noise = OpenSimplexNoise.new()
@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 
 
 func set_target(target, smoothed := true):
+	if not target:
+		return
 	_target = target
 	if not smoothed:
 		global_position = _target.global_position

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_healthbar_main3.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_healthbar_main1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_healthbar_main2.png" type="Texture" id=4]
+
+[node name="PlayerHealthBar" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+will_pulse = true
+will_fade = false
+
+[node name="HealthUnder" parent="." index="0"]
+margin_left = 6.48499e-05
+margin_top = 0.0883883
+margin_right = 57.0001
+margin_bottom = 15.0884
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="HealthOver" parent="." index="1"]
+margin_left = 6.48499e-05
+margin_top = 0.0883883
+margin_right = 57.0001
+margin_bottom = 15.0884
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 2 )

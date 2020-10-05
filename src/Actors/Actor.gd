@@ -7,12 +7,15 @@ signal actor_died(actor)
 
 export(PackedScene) var start_weapon
 export(String) var _type = "Actor"
+export(String) var hurt_sound = ""
+export(String) var crit_hurt_sound = ""
 
 onready var anim_player :AnimationPlayer = $AnimationPlayer
 onready var weapon_controller = $WeaponController
 onready var sprite = $BodyPivot/Sprite
 
-var health = 100.0
+const MAX_HEALTH = 100.0
+var health = MAX_HEALTH
 var dead = false
 var immune = false
 
@@ -22,20 +25,28 @@ func _ready() -> void:
 	$Hurtbox.connect("body_entered", self, "_on_Hurtbox_body_entered")
 	$HurtboxCritical.connect("area_entered", self, "_on_CritialHurtbox_area_entered")
 	$HurtboxCritical.connect("body_entered", self, "_on_CritialHurtbox_body_entered")
-	connect("actor_hurt", $HealthBar, "_on_health_bar_updated")
-	$HealthBar._on_max_health_updated(health)
-	$WeaponController.add_weapon(start_weapon)
-	
 	modulate.a = 0.0
 	play_anim("spawn")
 
+# Some things have to be loaded later for UI
+func late_ready() -> void:
+	add_weapon(start_weapon.instance())
+
+func add_weapon(w) -> void:
+	$WeaponController.add_weapon(w)
+	w.connect("started_reload", self, "_on_weapon_started_reload")
+	w.connect("reloaded", self, "_on_weapon_reloaded")
+
 func update() -> void:
 	.update()
+	_set_sprite_orientation()
+	weapon_controller.update_rotation(get_weapon_rotation())
+
+func _set_sprite_orientation():
 	if velocity.x > 0 and sprite.flip_h:
 		sprite.flip_h = false
 	elif velocity.x < 0 and not sprite.flip_h:
 		sprite.flip_h = true
-	weapon_controller.update_rotation(get_weapon_rotation())
 
 func get_input() -> Vector2:
 	return Vector2()
@@ -49,13 +60,18 @@ func is_dashing() -> bool:
 func play_anim(name) -> void:
 	if anim_player.has_animation(name):
 		if anim_player.current_animation == "spawn":
+			anim_player.queue("_reset")
 			anim_player.queue(name)
 		elif anim_player.current_animation != name:
-			anim_player.play(name)
+			anim_player.play("_reset")
+			anim_player.queue(name)
 	else:
 		print("HEY! Unknown animation for actor: %s" % name)
 
-func damage(amount: int) -> void:
+func damage(amount: int, critical = false) -> void:
+	if amount < 0:
+		print("HEY! Trying to heal? Negative damage amount: %s" % amount)
+		return
 	if immune:
 		return
 	health -= amount
@@ -64,13 +80,16 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		health = 0
 		die()
-#	else:
+	if critical:
+		SfxController.play(crit_hurt_sound)
+	else:
+		SfxController.play(hurt_sound)
 	
 
 func die() -> void:
 	if dead:
 		return
-	_disable_collisions()
+	_disable_collisions(true, true)
 	emit_signal("actor_died", self)
 	play_anim("die")
 	dead = true
@@ -85,9 +104,16 @@ func get_type():
 func get_center() -> Vector2:
 	return weapon_controller.global_position
 
-func _disable_collisions():
-	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
-	$CollisionShape2D.set_deferred("disabled", true)
+func set_immune(val: bool, self_exit = false) -> void:
+	immune = val
+	_disable_collisions(val, false)
+	if self_exit and val:
+		$ImmuneDisabler.start()
+
+func _disable_collisions(val: bool, set_world_collision = false) -> void:
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", val)
+	if set_world_collision:
+		$CollisionShape2D.set_deferred("disabled", val)
 
 func _on_Hurtbox_area_entered(area) -> void:
 	if not dead:
@@ -100,7 +126,22 @@ func _on_Hurtbox_body_entered(body) -> void:
 
 func _on_CritialHurtbox_area_entered(area) -> void:
 	if not dead:
-		damage(area.owner.get_critical_damage())
+		damage(area.owner.get_critical_damage(), true)
 
 func _on_CritialHurtbox_body_entered(body) -> void:
 	pass
+
+func _on_weapon_started_reload():
+#	print("Weapon started reload for: %s" % name)
+	pass
+
+func _on_weapon_reloaded(ammo, magazine_ammo):
+#	print("Weapon reloaded for: %s" % name)
+	pass
+
+func on_dash():
+	pass
+
+
+func _on_ImmuneDisabler_timeout():
+	set_immune(false)

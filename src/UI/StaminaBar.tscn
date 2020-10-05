@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_stamine1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_stamine3.png" type="Texture" id=3]
+[ext_resource path="res://assets/Dropbox/Art/UI/ui_stamine2.png" type="Texture" id=4]
+
+[node name="StaminaBar" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+healthy_color = Color( 1, 1, 0, 1 )
+danger_color = Color( 0.392157, 0.392157, 0.313726, 1 )
+pulse_color = Color( 0.392157, 0.392157, 0.313726, 1 )
+flash_color = Color( 0.392157, 0.392157, 0.313726, 1 )
+caution_zone = 0.0
+danger_zone = 0.0
+will_fade = false
+
+[node name="HealthUnder" parent="." index="0"]
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 1, 1, 0, 0.27451 )
+
+[node name="HealthOver" parent="." index="1"]
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 1, 1, 0, 1 )

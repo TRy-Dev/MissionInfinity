@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/Actors/Actor.tscn" type="PackedScene" id=2]
@@ -11,19 +11,21 @@
 [ext_resource path="res://src/Actors/States/Motion/Move.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Actors/States/AI/Chase.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Actors/States/AI/Shoot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 250.0
+radius = 200.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 150.0
+radius = 120.0
 
 [node name="Enemy" instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 1 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
 _type = "Enemy"
+hurt_sound = "enemy-hurt"
+crit_hurt_sound = "enemy-hurt-crit"
 
 [node name="AI" type="Node" parent="." index="0"]
 script = ExtResource( 4 )
@@ -34,6 +36,8 @@ start_state = NodePath("Roam")
 [node name="Chase" parent="AI" index="1" instance=ExtResource( 10 )]
 
 [node name="Shoot" parent="AI" index="2" instance=ExtResource( 11 )]
+
+[node name="Die" parent="AI" index="3" instance=ExtResource( 6 )]
 
 [node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 3 )]
 
@@ -76,19 +80,24 @@ position = Vector2( 0, -20.3498 )
 collision_layer = 4
 collision_mask = 8
 
-[node name="PlayerDetect" type="Area2D" parent="." index="11"]
+[node name="PlayerDetect" type="Area2D" parent="." index="10"]
 monitorable = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" index="0"]
 shape = SubResource( 1 )
 
-[node name="ShootRange" type="Area2D" parent="." index="12"]
+[node name="ShootRange" type="Area2D" parent="." index="11"]
 monitorable = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRange" index="0"]
 shape = SubResource( 2 )
+
+[node name="HealthBar" parent="." index="12" instance=ExtResource( 12 )]
+margin_top = -53.2593
+margin_right = 0.0
+margin_bottom = -53.2593
 [connection signal="state_changed" from="AI" to="AIStateDisplay" method="_on_StateMachine_state_changed"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]

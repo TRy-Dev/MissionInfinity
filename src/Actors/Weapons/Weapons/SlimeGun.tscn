@@ -8,8 +8,11 @@
 [node name="SlimeGun" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 pivot_length = 10
-cooldown = 0.6
+fire_rate = 0.2
+reload_time = 0.4
 bullet_prefab = ExtResource( 4 )
+start_ammo = 1000
+magazine_capacity = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

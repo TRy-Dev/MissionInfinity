@@ -1,17 +1,98 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/Actor.gd" type="Script" id=2]
 [ext_resource path="res://src/Actors/States/Debug/StateNameDisplay.gd" type="Script" id=3]
 [ext_resource path="res://assets/Dropbox/Art/postac/shadow_ellipse.png" type="Texture" id=4]
 [ext_resource path="res://src/StateMachine/StateMachine.gd" type="Script" id=5]
 [ext_resource path="res://src/Actors/Weapons/WeaponController.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "dash"
+[sub_resource type="Animation" id=8]
+resource_name = "_reset"
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("BodyPivot:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("BodyPivot:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("BodyPivot:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("BodyPivot:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "die"
+[sub_resource type="Animation" id=9]
+
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:modulate:a")
@@ -24,17 +105,56 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "hurt"
+[sub_resource type="Animation" id=11]
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("BodyPivot:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.588235, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BodyPivot:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("BodyPivot:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("BodyPivot:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2 )
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 loop = true
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 loop = true
 
-[sub_resource type="Animation" id=6]
-resource_name = "spawn"
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -50,7 +170,6 @@ tracks/0/keys = {
 }
 
 [node name="Actor" type="KinematicBody2D"]
-modulate = Color( 1, 1, 1, 0 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
@@ -69,12 +188,13 @@ texture = ExtResource( 4 )
 [node name="Sprite" type="Sprite" parent="BodyPivot"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dash = SubResource( 1 )
-anims/die = SubResource( 2 )
-anims/hurt = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/move = SubResource( 5 )
-anims/spawn = SubResource( 6 )
+anims/_reset = SubResource( 8 )
+anims/dash = SubResource( 9 )
+anims/die = SubResource( 10 )
+anims/hurt = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/move = SubResource( 13 )
+anims/spawn = SubResource( 7 )
 
 [node name="StateDisplay" type="Label" parent="."]
 margin_left = -19.2627
@@ -103,9 +223,8 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxCritical"]
 
-[node name="HealthBar" parent="." instance=ExtResource( 1 )]
-margin_left = -22.0
-margin_top = -60.0
-margin_right = -22.0
-margin_bottom = -60.0
+[node name="ImmuneDisabler" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 [connection signal="state_changed" from="StateMachine" to="StateDisplay" method="_on_StateMachine_state_changed"]
+[connection signal="timeout" from="ImmuneDisabler" to="." method="_on_ImmuneDisabler_timeout"]

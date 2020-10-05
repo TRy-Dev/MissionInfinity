@@ -11,10 +11,10 @@ func enter(previous):
 	SfxController.play(hurt_sound)
 	timer.start()
 	owner.play_anim("hurt")
-	owner.immune = true
+	owner.set_immune(true, true)
 
 func _on_Timer_timeout():
 	emit_signal("finished", "previous")
 
-func exit():
-	owner.immune = false
+#func exit():
+#	owner.set_immune(false)

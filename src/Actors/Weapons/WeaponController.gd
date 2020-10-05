@@ -1,5 +1,7 @@
 extends Position2D
 
+signal weapon_equipped(weapon)
+
 var current_weapon = null
 
 const PLAYER_BULLET_MASKS = [1,2,4]
@@ -8,13 +10,12 @@ const ENEMY_BULLET_MASKS = [0,1,3]
 const ENEMY_BULLET_LAYER = 4
 
 func add_weapon(weapon) -> void:
+	unequip_current()
 	if not weapon:
 		return
-	weapon = weapon.instance()
 	add_child(weapon)
 	weapon.position.x = weapon.pivot_length
 	weapon.owner = self
-#	
 	current_weapon = weapon
 	
 	var owner_type = owner.get_type()
@@ -24,6 +25,12 @@ func add_weapon(weapon) -> void:
 		weapon.set_collision_masks(ENEMY_BULLET_LAYER, ENEMY_BULLET_MASKS)
 	else:
 		print("HEY! Unknown owner for weapon controller: %s" % owner_type)
+	emit_signal("weapon_equipped", weapon)
+
+func unequip_current():
+	if current_weapon:
+		print("TODO: Unequipping current weapon %s" % current_weapon.name)
+
 func update_rotation(rot) -> void:
 	if not current_weapon:
 		return
@@ -36,3 +43,6 @@ func update_rotation(rot) -> void:
 func shoot() -> void:
 	if current_weapon:
 		current_weapon.shoot()
+
+func reload() -> void:
+	current_weapon.reload()

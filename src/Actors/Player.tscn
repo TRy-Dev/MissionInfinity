@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/States/Motion/Move.tscn" type="PackedScene" id=2]
@@ -9,20 +9,61 @@
 [ext_resource path="res://src/Actors/States/Motion/Hurt.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Actors/States/Motion/Die.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Actors/Weapons/Weapons/Pistol.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/lightmask.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 17.9791 )
+extents = Vector2( 8.396, 14.6021 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11.7199, 27.2702 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "died"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle-light"
+length = 10.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.45, -0.25, 0, 0.25, 0, 0.55, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.1, 7, 10 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Light2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.4, -0.25, 0, 0.25, 0, 0.37, -0.25, 0, 0.25, 0, 0.45, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.1, 7, 10 )
+}
+
 [node name="Player" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 1 )
 collision_layer = 1
 collision_mask = 6
 script = ExtResource( 5 )
 start_weapon = ExtResource( 9 )
 _type = "Player"
+hurt_sound = "player-hurt"
+crit_hurt_sound = "player-hurt"
 
 [node name="Idle" parent="StateMachine" index="0" instance=ExtResource( 4 )]
 
@@ -32,12 +73,11 @@ _type = "Player"
 step_sfx = "step"
 
 [node name="Hurt" parent="StateMachine" index="3" instance=ExtResource( 7 )]
-hurt_duration = 0.001
 
 [node name="Die" parent="StateMachine" index="4" instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0, -17.0643 )
+position = Vector2( 0, -13.7218 )
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="BodyPivot" index="1"]
@@ -45,7 +85,7 @@ position = Vector2( 0, -31.1068 )
 texture = ExtResource( 6 )
 
 [node name="WeaponController" parent="." index="5"]
-position = Vector2( 0, -29.9831 )
+position = Vector2( 0, -26.6795 )
 
 [node name="Hurtbox" parent="." index="6"]
 collision_layer = 1
@@ -54,3 +94,23 @@ collision_mask = 16
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -30.0381 )
 shape = SubResource( 2 )
+
+[node name="StaminaFrozenTimer" type="Timer" parent="." index="8"]
+wait_time = 0.5
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="." index="9"]
+one_shot = true
+
+[node name="Light2D" type="Light2D" parent="." index="10"]
+position = Vector2( 0, -16.9138 )
+texture = ExtResource( 10 )
+texture_scale = 0.37
+color = Color( 1, 1, 0.843137, 1 )
+energy = 0.0
+shadow_enabled = true
+shadow_color = Color( 0.505882, 0.509804, 0.509804, 0 )
+
+[node name="PlayerAnim" type="AnimationPlayer" parent="." index="11"]
+anims/died = SubResource( 3 )
+anims/idle-light = SubResource( 4 )
