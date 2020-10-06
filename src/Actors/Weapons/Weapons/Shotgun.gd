@@ -8,7 +8,7 @@ func shoot() -> void:
 	if can_shoot():
 		if decrease_magazine_ammo(bullets):
 			var start_angle = owner.rotation_degrees - spread_angle
-			var delta_angle = 2.0 * spread_angle / bullets
+			var delta_angle = 2.0 * spread_angle / (bullets - 1)
 			for i in range(bullets):
 				spawn_bullet(bullet_pos.global_position, start_angle + delta_angle * i)
 			fire_rate_timer.start()

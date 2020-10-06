@@ -8,3 +8,6 @@ fire_rate = 0.8
 reload_time = 2.0
 bullet_prefab = ExtResource( 2 )
 magazine_capacity = 5
+
+[node name="WeaponCursor" parent="BulletPos" index="0"]
+visible = false

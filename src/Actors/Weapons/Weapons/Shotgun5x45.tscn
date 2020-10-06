@@ -9,3 +9,6 @@ bullet_prefab = ExtResource( 2 )
 magazine_capacity = 15
 bullets = 5
 spread_angle = 45.0
+
+[node name="WeaponCursor" parent="BulletPos" index="0"]
+visible = false

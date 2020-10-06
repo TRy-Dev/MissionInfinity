@@ -8,7 +8,7 @@
 [node name="Sugie2" instance=ExtResource( 1 )]
 start_weapon = ExtResource( 4 )
 see_range = 200.0
-shoot_range = 100.0
+shoot_range = 120.0
 
 [node name="AI" parent="." index="0"]
 start_state = NodePath("../../Sugie2/AI/Roam")

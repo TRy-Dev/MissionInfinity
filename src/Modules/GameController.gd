@@ -24,6 +24,12 @@ func _process(delta):
 		load_scene(main_menu_scene)
 	if Input.is_action_just_pressed("hide_tutorial"):
 		toggle_tutorial()
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+		if OS.window_fullscreen:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func load_scene(scene):
 	if scene:

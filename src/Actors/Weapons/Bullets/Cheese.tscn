@@ -12,6 +12,7 @@ start_speed = 500.0
 min_damage = 15.0
 max_damage = 15.0
 crit_damage_mult = 2.0
+spawn_sound = "bullet"
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

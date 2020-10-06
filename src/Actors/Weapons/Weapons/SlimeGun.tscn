@@ -9,7 +9,6 @@
 script = ExtResource( 2 )
 pivot_length = 10
 fire_rate = 0.25
-reload_time = 0.5
 bullet_prefab = ExtResource( 4 )
 start_ammo = 1000
 magazine_capacity = 4

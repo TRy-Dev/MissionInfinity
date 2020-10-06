@@ -8,7 +8,7 @@
 [node name="Angst3" instance=ExtResource( 1 )]
 start_weapon = ExtResource( 4 )
 see_range = 200.0
-shoot_range = 80.0
+shoot_range = 120.0
 
 [node name="AI" parent="." index="0"]
 start_state = NodePath("../../Angst3/AI/Roam")

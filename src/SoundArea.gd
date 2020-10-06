@@ -6,11 +6,13 @@ export(String) var sound = ""
 
 
 func _on_SoundArea_body_entered(body):
-	play_sound()
+	if body.name == "Player":
+		play_sound()
 
 
 func _on_SoundArea_area_entered(area):
-	play_sound()
+	if area.owner.name == "Player":
+		play_sound()
 
 func play_sound():
 	SfxController.play(sound)

@@ -117,7 +117,9 @@ position = Vector2( 1161.29, 326.157 )
 enemy_prefab = ExtResource( 4 )
 
 [node name="SoundArea" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( 1337.68, 264.188 )
+position = Vector2( 1342.32, 221.351 )
+monitorable = false
+collision_layer = 2147483650
 sound = "time-travel"
 
 [node name="CollisionShape2D" parent="SoundArea" index="0"]

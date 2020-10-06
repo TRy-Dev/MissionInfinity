@@ -57,7 +57,7 @@ var clips = {
 		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.5.wav"),
 	],
 	"time-travel": [
-		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_typing_2.5.wav"),
+		preload("res://assets/Dropbox/Audio/Sound_Effect/Select/sound_effect_time_travel2.wav"),
 	]
 	
 }
@@ -94,5 +94,6 @@ func play(name) -> void:
 
 func _play_audio(source, name):
 	source.stream = clips[name][RNG.randi(0, len(clips[name]) - 1)]
-	source.pitch_scale = RNG.randf(MIN_PITCH, MAX_PITCH)
+	if not name in ["time-travel"]:
+		source.pitch_scale = RNG.randf(MIN_PITCH, MAX_PITCH)
 	source.play()
